@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#F8FAFC" />
+  <meta name="theme-color" content="#FBF9FF" />
   <meta name="description" content="AWS Cloud Club ITP: la comunidad de estudiantes que aprende, conecta y crece en la nube." />
   <title>AWS Cloud Club ITP | Comunidad tech universitaria</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F172A'/%3E%3Cpath d='M20 40h24a8 8 0 0 0 1.1-15.9A12 12 0 0 0 22 28a6 6 0 0 0-2 12Z' fill='none' stroke='%23F8FAFC' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='47' cy='18' r='5' fill='%23FFC83B'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238B0FC6'/%3E%3Cpath d='M20 40h24a8 8 0 0 0 1.1-15.9A12 12 0 0 0 22 28a6 6 0 0 0-2 12Z' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='47' cy='18' r='5' fill='%23FBE143'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --paper: #f8fafc;
+      --paper: #fbf9ff;
       --surface: #ffffff;
-      --ink: #0f172a;
-      --ink-soft: #1e293b;
-      --muted: #64748b;
-      --line: rgba(15, 23, 42, 0.12);
-      --line-strong: rgba(15, 23, 42, 0.24);
-      --sun: #ffc83b;
-      --sun-hover: #ffd463;
-      --sun-soft: #fff6d8;
-      --azure: #2563eb;
+      --ink: #170b22;
+      --ink-soft: #2b1839;
+      --muted: #6a5f76;
+      --line: rgba(139, 15, 198, 0.14);
+      --line-strong: rgba(139, 15, 198, 0.3);
+      --sun: #fbe143;
+      --sun-hover: #ffe66b;
+      --sun-soft: #fffbd6;
+      --azure: #303dec;
+      --purple: #8b0fc6;
+      --purple-bright: #af38e8;
+      --purple-dark: #7308a5;
+      --plum: #26032f;
+      --lavender: #f7e9ff;
+      --blue-soft: #ecebff;
       --green: #15803d;
       --green-soft: #f0fdf4;
       --radius: 16px;
@@ -87,7 +93,7 @@
     }
 
     :where(a, button):focus-visible {
-      outline: 2px solid var(--ink);
+      outline: 2px solid var(--purple);
       outline-offset: 3px;
     }
 
@@ -97,7 +103,7 @@
       left: 12px;
       z-index: 200;
       padding: 10px 18px;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--purple);
       border-radius: 999px;
       background: var(--surface);
       font-size: 13px;
@@ -145,9 +151,16 @@
       height: 40px;
       flex: 0 0 auto;
       place-items: center;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--purple);
       border-radius: 10px;
-      color: var(--ink);
+      background: var(--purple);
+      color: var(--surface);
+      transition: background-color 160ms ease, border-color 160ms ease;
+    }
+
+    .brand:hover .brand__mark {
+      border-color: var(--purple-bright);
+      background: var(--purple-bright);
     }
 
     .brand__mark::after {
@@ -183,7 +196,7 @@
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.13em;
-      color: var(--muted);
+      color: var(--purple);
     }
 
     .nav {
@@ -207,14 +220,14 @@
       bottom: -5px;
       left: 0;
       height: 1px;
-      background: var(--ink);
+      background: var(--purple);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 180ms ease;
     }
 
     .nav a:hover {
-      color: var(--ink);
+      color: var(--purple);
     }
 
     .nav a:hover::after {
@@ -253,18 +266,19 @@
     }
 
     .btn--dark {
-      border-color: var(--ink);
-      background: var(--ink);
+      border-color: var(--purple);
+      background: var(--purple);
       color: var(--surface);
     }
 
     .btn--dark:hover {
-      background: var(--ink-soft);
+      border-color: var(--azure);
+      background: var(--azure);
       transform: translateY(-1px);
     }
 
     .btn--sun {
-      border-color: #e3b431;
+      border-color: #d9c22f;
       background: var(--sun);
       color: var(--ink);
     }
@@ -360,8 +374,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(to right, rgba(15, 23, 42, 0.042) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(15, 23, 42, 0.042) 1px, transparent 1px);
+        linear-gradient(to right, rgba(139, 15, 198, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 15, 198, 0.07) 1px, transparent 1px);
       background-size: 72px 72px;
       -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
       mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
@@ -389,7 +403,7 @@
       font-weight: 500;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--purple);
     }
 
     .pill__dot {
@@ -397,7 +411,7 @@
       height: 18px;
       border-radius: 50%;
       background: var(--sun);
-      box-shadow: inset 0 0 0 5px var(--surface), 0 0 0 1px var(--ink);
+      box-shadow: inset 0 0 0 5px var(--surface), 0 0 0 1px var(--purple);
     }
 
     .pill__sep {
@@ -418,6 +432,7 @@
 
     .hero h1 em {
       font-style: normal;
+      color: var(--purple);
       text-decoration-line: underline;
       text-decoration-color: var(--sun);
       text-decoration-thickness: 0.11em;
@@ -464,6 +479,7 @@
       font-weight: 600;
       letter-spacing: -0.04em;
       line-height: 1;
+      color: var(--purple);
     }
 
     .stats dt {
@@ -486,6 +502,7 @@
       border: 1px solid var(--line-strong);
       border-radius: 22px;
       background: var(--surface);
+      box-shadow: 0 18px 40px -36px rgba(139, 15, 198, 0.45);
     }
 
     .club-card__head {
@@ -509,9 +526,10 @@
       height: 34px;
       flex: 0 0 auto;
       place-items: center;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--purple);
       border-radius: 9px;
-      color: var(--ink);
+      background: var(--purple);
+      color: var(--surface);
     }
 
     .club-card__mark svg {
@@ -531,7 +549,7 @@
       font-family: var(--mono);
       font-size: 8.5px;
       letter-spacing: 0.06em;
-      color: var(--muted);
+      color: var(--purple);
     }
 
     .status {
@@ -564,8 +582,8 @@
       overflow: hidden;
       padding: 20px;
       border-radius: 14px;
-      background: var(--ink);
-      color: var(--paper);
+      background: var(--purple);
+      color: #ffffff;
     }
 
     .event::before {
@@ -596,14 +614,14 @@
       align-items: center;
       gap: 6px;
       padding: 4px 8px;
-      border: 1px solid rgba(248, 250, 252, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.26);
       border-radius: 999px;
       font-family: var(--mono);
       font-size: 8px;
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(248, 250, 252, 0.72);
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .event__tag::before {
@@ -619,9 +637,10 @@
       width: 34px;
       height: 34px;
       place-items: center;
-      border: 1px solid rgba(248, 250, 252, 0.2);
+      border: 1px solid var(--sun);
       border-radius: 9px;
-      color: var(--sun);
+      background: var(--sun);
+      color: var(--ink);
     }
 
     .event__calendar svg {
@@ -635,7 +654,7 @@
       font-family: var(--mono);
       font-size: 9px;
       letter-spacing: 0.07em;
-      color: rgba(248, 250, 252, 0.55);
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .event__title {
@@ -657,7 +676,7 @@
       gap: 8px;
       margin-top: 22px;
       padding-top: 13px;
-      border-top: 1px solid rgba(248, 250, 252, 0.15);
+      border-top: 1px solid rgba(255, 255, 255, 0.24);
     }
 
     .event__time {
@@ -666,22 +685,22 @@
       gap: 6px;
       font-family: var(--mono);
       font-size: 9px;
-      color: rgba(248, 250, 252, 0.7);
+      color: rgba(255, 255, 255, 0.84);
     }
 
     .event__time svg {
       width: 13px;
       height: 13px;
-      color: rgba(248, 250, 252, 0.45);
+      color: var(--sun);
     }
 
     .event__spots {
       padding: 3px 7px;
-      border: 1px solid rgba(248, 250, 252, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 999px;
       font-family: var(--mono);
       font-size: 8px;
-      color: rgba(248, 250, 252, 0.78);
+      color: rgba(255, 255, 255, 0.86);
     }
 
     .mini-grid {
@@ -709,6 +728,18 @@
       border: 1px solid var(--line-strong);
       border-radius: 7px;
       background: var(--surface);
+      color: var(--purple);
+    }
+
+    .mini:nth-child(2) .mini__icon {
+      border-color: rgba(48, 61, 236, 0.28);
+      background: var(--blue-soft);
+      color: var(--azure);
+    }
+
+    .mini:nth-child(3) .mini__icon {
+      border-color: #d9c22f;
+      background: var(--sun);
       color: var(--ink);
     }
 
@@ -753,13 +784,13 @@
     }
 
     .avatars span:nth-child(1) {
-      background: var(--ink);
-      color: var(--paper);
+      background: var(--purple);
+      color: #ffffff;
     }
 
     .avatars span:nth-child(2) {
       background: var(--azure);
-      color: var(--surface);
+      color: #ffffff;
     }
 
     .avatars span:nth-child(3) {
@@ -803,7 +834,7 @@
       content: "";
       width: 7px;
       height: 7px;
-      border: 1px solid var(--ink);
+      border: 1px solid var(--purple);
       border-radius: 50%;
       background: var(--sun);
     }
@@ -819,6 +850,7 @@
     }
 
     .section-head h2 span {
+      color: var(--purple);
       text-decoration-line: underline;
       text-decoration-color: var(--sun);
       text-decoration-thickness: 0.1em;
@@ -868,9 +900,21 @@
       width: 42px;
       height: 42px;
       place-items: center;
-      border: 1px solid var(--line-strong);
+      border: 1px solid rgba(139, 15, 198, 0.28);
       border-radius: 10px;
-      background: var(--paper);
+      background: var(--lavender);
+      color: var(--purple);
+    }
+
+    .benefit:nth-child(2) .benefit__icon {
+      border-color: rgba(48, 61, 236, 0.26);
+      background: var(--blue-soft);
+      color: var(--azure);
+    }
+
+    .benefit:nth-child(3) .benefit__icon {
+      border-color: #d9c22f;
+      background: var(--sun);
       color: var(--ink);
     }
 
@@ -939,7 +983,7 @@
       overflow: hidden;
       padding: clamp(32px, 5.5vw, 66px);
       border-radius: 22px;
-      background: var(--ink);
+      background: var(--plum);
       color: var(--paper);
     }
 
@@ -981,8 +1025,9 @@
     }
 
     .community h2 span {
+      color: var(--sun);
       text-decoration-line: underline;
-      text-decoration-color: var(--sun);
+      text-decoration-color: var(--purple-bright);
       text-decoration-thickness: 0.1em;
       text-underline-offset: 0.08em;
       text-decoration-skip-ink: none;
@@ -1039,13 +1084,13 @@
 
     .community__art::before {
       inset: 0;
-      border: 1px solid rgba(248, 250, 252, 0.16);
+      border: 1px solid rgba(175, 56, 232, 0.55);
     }
 
     .community__art::after {
       width: 112px;
       height: 112px;
-      border: 1px solid rgba(255, 200, 59, 0.55);
+      border: 1px solid rgba(48, 61, 236, 0.8);
     }
 
     .community__art span {
@@ -1055,11 +1100,11 @@
       height: 58px;
       border-radius: 50%;
       background: var(--sun);
-      box-shadow: 0 0 0 10px rgba(255, 200, 59, 0.09), 0 0 0 30px rgba(255, 200, 59, 0.04);
+      box-shadow: 0 0 0 10px rgba(175, 56, 232, 0.12), 0 0 0 30px rgba(48, 61, 236, 0.08);
     }
 
     .site-footer {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(139, 15, 198, 0.24);
       background: var(--surface);
     }
 
@@ -1104,7 +1149,7 @@
 
     .footer__links a:hover,
     .footer__contact a:hover {
-      color: var(--azure);
+      color: var(--purple);
     }
 
     .footer__contact p {
