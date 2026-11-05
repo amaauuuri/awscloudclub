@@ -1,215 +1,761 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#F8FAFC" />
   <meta name="description" content="Accesos directos a las páginas de prueba y a los 5 equipos de la dinámica del AWS Cloud Club ITP." />
+  <meta name="page-type" content="service" />
+  <meta name="site-kind" content="other" />
   <title>Dinámica de Equipos | AWS Cloud Club ITP</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: "#F5F3FF",
-              100: "#EDE9FE",
-              200: "#DDD6FE",
-              300: "#C4B5FD",
-              400: "#A78BFA",
-              500: "#8B5CF6",
-              600: "#7C3AED",
-              700: "#6D28D9",
-              800: "#5B21B6",
-              900: "#4C1D95"
-            },
-            azure: "#2563EB",
-            sun: "#FFC83B",
-            ink: "#0F172A"
-          }
-        }
-      }
-    };
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --paper: #f8fafc;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15, 23, 42, 0.13);
+      --line-strong: rgba(15, 23, 42, 0.26);
+      --sun: #ffc83b;
+      --radius: 18px;
+      --radius-sm: 10px;
+      --sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: light;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
     body {
+      margin: 0;
       min-height: 100vh;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(124, 58, 237, 0.16), transparent 38%),
-        radial-gradient(circle at 88% 14%, rgba(255, 200, 59, 0.18), transparent 34%),
-        radial-gradient(circle at 50% 100%, rgba(37, 99, 235, 0.12), transparent 42%),
-        #f8fafc;
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
-    .team-link {
-      position: relative;
-      overflow: hidden;
-      border-left-color: var(--accent);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .team-link::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 6px;
-      background: var(--accent);
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
     }
 
-    .team-icon {
-      background: var(--soft);
-      color: var(--dark);
-    }
-
-    .team-dot {
-      background: var(--accent);
-    }
-
-    .team-code {
-      background: var(--soft);
-      color: var(--dark);
+    ::selection {
+      background: var(--sun);
+      color: var(--ink);
     }
 
     :where(a):focus-visible {
-      outline: 3px solid rgba(124, 58, 237, 0.35);
-      outline-offset: 4px;
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    .page {
+      width: min(100% - 48px, 1180px);
+      margin-inline: auto;
+      padding: 28px 0 40px;
+    }
+
+    .masthead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand__mark {
+      position: relative;
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 9px;
+      color: var(--ink);
+    }
+
+    .brand__mark::after {
+      content: "";
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 8px;
+      height: 8px;
+      background: var(--sun);
+      border: 1px solid var(--paper);
+      border-radius: 50%;
+    }
+
+    .brand__mark svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .brand__name {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-family: var(--display);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .brand__name span {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    .masthead__meta {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .meta-cell {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 7px 12px;
+      background: var(--surface);
+    }
+
+    .meta-cell + .meta-cell {
+      border-left: 1px solid var(--line);
+    }
+
+    .meta-cell span:first-child {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .meta-cell span:last-child {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: 48px;
+      align-items: end;
+      padding: clamp(44px, 8vw, 92px) 0 clamp(36px, 5vw, 56px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: var(--sun);
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-top: 20px;
+      font-family: var(--display);
+      font-size: clamp(3rem, 7.4vw, 6.4rem);
+      font-weight: 600;
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      box-shadow: inset 0 -0.11em 0 var(--sun);
+    }
+
+    .hero__lead {
+      max-width: 540px;
+      margin-top: 26px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero__art {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transform: translateY(6px);
+    }
+
+    .hero__art::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    .swatch {
+      position: relative;
+      height: 26px;
+      border: 1px solid rgba(15, 23, 42, 0.16);
+      border-radius: 4px;
+    }
+
+    .swatch--morado { background: #7c3aed; }
+    .swatch--amarillo { background: #ffc83b; }
+    .swatch--azul { background: #2563eb; }
+    .swatch--blanco { background: #e2e8f0; }
+    .swatch--rosa { background: #ec4899; }
+
+    .group {
+      padding-top: 26px;
+    }
+
+    .group + .group {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .group__head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .group__head h2 {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .group__count {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .group__line {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 168px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform 220ms ease, border-color 220ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+    }
+
+    .card__arrow {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      transition: transform 220ms ease, background-color 220ms ease;
+    }
+
+    .card:hover .card__arrow {
+      transform: translateX(2px);
+      background: var(--paper);
+    }
+
+    .card__arrow svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .card--test-1 {
+      grid-column: span 7;
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper);
+    }
+
+    .card--test-1 .card__arrow {
+      color: var(--paper);
+      border-color: rgba(248, 250, 252, 0.28);
+    }
+
+    .card--test-1:hover {
+      border-color: var(--ink);
+    }
+
+    .card--test-2 {
+      grid-column: span 5;
+    }
+
+    .card__index {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 28px;
+      padding-inline: 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .card--test-1 .card__index {
+      background: var(--sun);
+      border-color: var(--sun);
+      color: var(--ink);
+    }
+
+    .card--test-2 .card__index {
+      background: var(--sun);
+      border-color: var(--ink);
+    }
+
+    .card__body {
+      margin-top: auto;
+      padding-top: 48px;
+    }
+
+    .card__body h3 {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .card__body p {
+      margin-top: 5px;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+
+    .card--test-1 .card__body p {
+      color: rgba(248, 250, 252, 0.55);
+    }
+
+    .team {
+      padding: 0;
+    }
+
+    .team__color {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      min-height: 92px;
+      padding: 14px 16px;
+      background: var(--accent);
+      color: var(--on-accent);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .team__hex {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--on-accent);
+      opacity: 0.82;
+    }
+
+    .team__stripe {
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+
+    .team__content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px 20px 20px;
+    }
+
+    .team__content h3 {
+      font-family: var(--display);
+      font-size: clamp(1.2rem, 2.1vw, 1.55rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .team--morado {
+      grid-column: span 5;
+      grid-row: span 2;
+    }
+
+    .team--morado .team__color {
+      flex: 1;
+      min-height: 210px;
+    }
+
+    .team--amarillo { grid-column: span 4; }
+    .team--azul { grid-column: span 3; }
+    .team--blanco { grid-column: span 4; }
+    .team--rosa { grid-column: span 3; }
+
+    .team--blanco .team__color {
+      border-bottom-color: var(--line-strong);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .footer p {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr) 170px;
+        gap: 32px;
+      }
+
+      .card--test-1,
+      .card--test-2,
+      .team--morado,
+      .team--amarillo,
+      .team--azul,
+      .team--blanco,
+      .team--rosa {
+        grid-column: span 6;
+      }
+
+      .team--morado {
+        grid-row: span 1;
+      }
+
+      .team--morado .team__color {
+        min-height: 92px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 32px, 1180px);
+        padding-top: 18px;
+      }
+
+      .masthead {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .masthead__meta {
+        width: 100%;
+      }
+
+      .meta-cell {
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-top: 48px;
+      }
+
+      .hero__art {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        padding: 8px;
+        transform: none;
+      }
+
+      .hero__art::before {
+        inset: 4px;
+      }
+
+      .swatch {
+        height: 30px;
+      }
+
+      .bento {
+        grid-template-columns: 1fr;
+      }
+
+      .card--test-1,
+      .card--test-2,
+      .team--morado,
+      .team--amarillo,
+      .team--azul,
+      .team--blanco,
+      .team--rosa {
+        grid-column: 1 / -1;
+      }
+
+      .card {
+        min-height: 156px;
+        padding: 18px;
+      }
+
+      .card__body h3 {
+        font-size: 21px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   </style>
 </head>
-<body class="px-4 py-10 sm:py-16">
-  <main class="mx-auto w-full max-w-xl">
-    <header class="text-center">
-      <span class="relative mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-gradient-to-br from-brand-600 via-brand-500 to-azure text-white shadow-xl shadow-brand-600/25">
-        <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M6.75 18.25h10.5a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925-3.546 5.974 5.974 0 0 0-9.094 1.563A5.25 5.25 0 0 0 6.75 18.25Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        <span class="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full bg-sun ring-2 ring-white"></span>
-      </span>
-
-      <span class="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-200/80 bg-white/70 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.18em] text-brand-700 shadow-sm backdrop-blur-md">
-        <span class="h-1.5 w-1.5 rounded-full bg-brand-500"></span>
-        AWS Cloud Club ITP
-      </span>
-
-      <h1 class="mt-3 text-3xl font-black tracking-[-0.04em] text-ink sm:text-4xl">Dinámica de Equipos</h1>
-      <p class="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-600">
-        Explora las 2 páginas de prueba y conoce a los 5 equipos de la actividad.
-      </p>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand__mark">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.75 18.25h10.5a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925-3.546 5.974 5.974 0 0 0-9.094 1.563A5.25 5.25 0 0 0 6.75 18.25Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="brand__name">AWS Cloud Club <span>ITP</span></span>
+      </div>
+      <div class="masthead__meta">
+        <div class="meta-cell"><span>Pruebas</span><span>2</span></div>
+        <div class="meta-cell"><span>Equipos</span><span>5</span></div>
+      </div>
     </header>
 
-    <section class="mt-8" aria-labelledby="pruebas-title">
-      <div class="flex items-center gap-3">
-        <h2 id="pruebas-title" class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-slate-400">Pruebas</h2>
-        <span class="h-px flex-1 bg-slate-200" aria-hidden="true"></span>
-        <span class="text-[11px] font-bold text-slate-400">2</span>
-      </div>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__intro">
+          <span class="eyebrow">AWS Cloud Club ITP</span>
+          <h1 id="page-title">Dinámica de <em>Equipos</em></h1>
+          <p class="hero__lead">Explora las 2 páginas de prueba y conoce a los 5 equipos de la actividad.</p>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <span class="swatch swatch--morado"></span>
+          <span class="swatch swatch--amarillo"></span>
+          <span class="swatch swatch--azul"></span>
+          <span class="swatch swatch--blanco"></span>
+          <span class="swatch swatch--rosa"></span>
+        </div>
+      </section>
 
-      <div class="mt-3 grid gap-3">
-        <a href="src/Paginas%20Prueba/restaurante.html" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-900/5">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-slate-900 text-sm font-black text-white shadow-md shadow-slate-900/15">01</span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Página de Prueba 01</span>
-            <span class="mt-0.5 block truncate text-xs font-medium text-slate-500">Restaurante</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-slate-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
+      <section class="group" aria-labelledby="pruebas-title">
+        <div class="group__head">
+          <h2 id="pruebas-title">Pruebas</h2>
+          <span class="group__count">2</span>
+          <span class="group__line" aria-hidden="true"></span>
+        </div>
+        <div class="bento">
+          <a href="src/Paginas%20Prueba/restaurante.html" class="card card--test-1">
+            <span class="card__index">01</span>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <div class="card__body">
+              <h3>Página de Prueba 01</h3>
+              <p>Restaurante</p>
+            </div>
+          </a>
 
-        <a href="src/Paginas%20Prueba/index.html" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-600/10">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 via-brand-500 to-azure text-sm font-black text-white shadow-md shadow-brand-600/20">02</span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Página de Prueba 02</span>
-            <span class="mt-0.5 block truncate text-xs font-medium text-slate-500">AWS Cloud Club ITP</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-brand-700" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
-    </section>
+          <a href="src/Paginas%20Prueba/index.html" class="card card--test-2">
+            <span class="card__index">02</span>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <div class="card__body">
+              <h3>Página de Prueba 02</h3>
+              <p>AWS Cloud Club ITP</p>
+            </div>
+          </a>
+        </div>
+      </section>
 
-    <section class="mt-7" aria-labelledby="equipos-title">
-      <div class="flex items-center gap-3">
-        <h2 id="equipos-title" class="text-[11px] font-extrabold uppercase tracking-[0.2em] text-slate-400">Equipos</h2>
-        <span class="h-px flex-1 bg-slate-200" aria-hidden="true"></span>
-        <span class="text-[11px] font-bold text-slate-400">5</span>
-      </div>
+      <section class="group" aria-labelledby="equipos-title">
+        <div class="group__head">
+          <h2 id="equipos-title">Equipos</h2>
+          <span class="group__count">5</span>
+          <span class="group__line" aria-hidden="true"></span>
+        </div>
+        <div class="bento">
+          <a href="src/equipos/EquipoMorado.html" class="card team team--morado" style="--accent: #7C3AED; --on-accent: #ffffff;">
+            <div class="team__color">
+              <span class="team__stripe" aria-hidden="true"></span>
+            </div>
+            <div class="team__content">
+              <h3>Equipo Morado</h3>
+            </div>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
 
-      <div class="mt-3 grid gap-3">
-        <a href="src/equipos/EquipoMorado.html" class="team-link group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg hover:shadow-violet-600/10" style="--accent: #7C3AED; --soft: #F5F3FF; --dark: #4C1D95;">
-          <span class="team-icon grid h-11 w-11 shrink-0 place-items-center rounded-2xl">
-            <span class="team-dot h-3 w-3 rounded-full" aria-hidden="true"></span>
-          </span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Equipo Morado</span>
-            <span class="team-code mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold">#7C3AED</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-slate-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
+          <a href="src/equipos/EquipoAmarillo.html" class="card team team--amarillo" style="--accent: #FFC83B; --on-accent: #0F172A;">
+            <div class="team__color">
+              <span class="team__stripe" aria-hidden="true"></span>
+            </div>
+            <div class="team__content">
+              <h3>Equipo Amarillo</h3>
+            </div>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
 
-        <a href="src/equipos/EquipoAmarillo.html" class="team-link group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg hover:shadow-amber-400/15" style="--accent: #FFC83B; --soft: #FFFBEB; --dark: #92400E;">
-          <span class="team-icon grid h-11 w-11 shrink-0 place-items-center rounded-2xl">
-            <span class="team-dot h-3 w-3 rounded-full" aria-hidden="true"></span>
-          </span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Equipo Amarillo</span>
-            <span class="team-code mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold">#FFC83B</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-slate-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
+          <a href="src/equipos/EquipoAzul.html" class="card team team--azul" style="--accent: #2563EB; --on-accent: #ffffff;">
+            <div class="team__color">
+              <span class="team__stripe" aria-hidden="true"></span>
+            </div>
+            <div class="team__content">
+              <h3>Equipo Azul</h3>
+            </div>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
 
-        <a href="src/equipos/EquipoAzul.html" class="team-link group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg hover:shadow-blue-600/10" style="--accent: #2563EB; --soft: #EFF6FF; --dark: #1E3A8A;">
-          <span class="team-icon grid h-11 w-11 shrink-0 place-items-center rounded-2xl">
-            <span class="team-dot h-3 w-3 rounded-full" aria-hidden="true"></span>
-          </span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Equipo Azul</span>
-            <span class="team-code mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold">#2563EB</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-slate-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
+          <a href="src/equipos/EquipoBlanco.html" class="card team team--blanco" style="--accent: #E2E8F0; --on-accent: #334155;">
+            <div class="team__color">
+              <span class="team__stripe" aria-hidden="true"></span>
+            </div>
+            <div class="team__content">
+              <h3>Equipo Blanco</h3>
+            </div>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
 
-        <a href="src/equipos/EquipoBlanco.html" class="team-link group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-500/10" style="--accent: #64748B; --soft: #F8FAFC; --dark: #334155;">
-          <span class="team-icon grid h-11 w-11 shrink-0 place-items-center rounded-2xl">
-            <span class="team-dot h-3 w-3 rounded-full" aria-hidden="true"></span>
-          </span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Equipo Blanco</span>
-            <span class="team-code mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold">Blanco / Gris claro</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-slate-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
+          <a href="src/equipos/EquipoRosa.html" class="card team team--rosa" style="--accent: #EC4899; --on-accent: #ffffff;">
+            <div class="team__color">
+              <span class="team__stripe" aria-hidden="true"></span>
+            </div>
+            <div class="team__content">
+              <h3>Equipo Rosa</h3>
+            </div>
+            <span class="card__arrow">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
 
-        <a href="src/equipos/EquipoRosa.html" class="team-link group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/90 px-4 py-3.5 shadow-sm backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg hover:shadow-pink-600/10" style="--accent: #EC4899; --soft: #FDF2F8; --dark: #9D174D;">
-          <span class="team-icon grid h-11 w-11 shrink-0 place-items-center rounded-2xl">
-            <span class="team-dot h-3 w-3 rounded-full" aria-hidden="true"></span>
-          </span>
-          <span class="min-w-0 flex-1 text-left">
-            <span class="block text-sm font-extrabold text-slate-900">Equipo Rosa</span>
-            <span class="team-code mt-0.5 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold">#EC4899</span>
-          </span>
-          <svg class="h-4 w-4 shrink-0 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-slate-900" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
-    </section>
-
-    <footer class="mt-8 text-center">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">Hecho por estudiantes · AWS Cloud Club ITP</p>
+    <footer class="footer">
+      <p>Hecho por estudiantes · AWS Cloud Club ITP</p>
     </footer>
-  </main>
+  </div>
 </body>
 </html>
