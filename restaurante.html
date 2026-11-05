@@ -1,0 +1,2746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#F8F3E9" />
+  <meta name="description" content="Casa Oliva, restaurante mediterráneo en Valencia. Cocina de temporada, producto local y una mesa para disfrutar sin prisa. Reserva online." />
+  <title>Casa Oliva | Cocina mediterránea en Valencia</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23354B34'/%3E%3Cpath d='M12 28c0-8 5-14 16-16-2 11-8 16-16 16Z' fill='%23F8F3E9'/%3E%3Cpath d='M12 28c4-5 8-8 13-10' stroke='%23354B34' stroke-width='1.4' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet" />
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+  <style>
+    :root {
+      --cream: #f8f3e9;
+      --cream-soft: #fbf7ef;
+      --cream-deep: #f1e7d7;
+      --white: #fffdf8;
+      --ink: #20251f;
+      --ink-soft: #3b4238;
+      --muted: #5f675b;
+      --olive: #354b34;
+      --olive-deep: #22301f;
+      --olive-soft: #4b6248;
+      --terracotta: #a44e2c;
+      --terracotta-dark: #8b3e21;
+      --gold: #d3a254;
+      --terracotta-light: #e0a07c;
+      --line: rgba(32, 37, 31, 0.13);
+      --line-dark: rgba(248, 243, 233, 0.16);
+      --shadow-soft: 0 24px 60px -30px rgba(34, 48, 31, 0.35);
+      --shadow-card: 0 18px 40px -24px rgba(34, 48, 31, 0.3);
+      --radius: 26px;
+      --radius-sm: 16px;
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "DM Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    figure,
+    blockquote {
+      margin: 0;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    ::selection {
+      background: rgba(211, 162, 84, 0.4);
+      color: var(--ink);
+    }
+
+    :where(a, button, input, select, textarea):focus-visible {
+      outline: 3px solid rgba(184, 92, 55, 0.5);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 200;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--olive);
+      color: var(--cream);
+      font-weight: 600;
+      transform: translateY(-150%);
+      transition: transform 0.25s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    .section {
+      padding-block: clamp(4.5rem, 9vw, 7.5rem);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+      color: var(--terracotta);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .eyebrow-light {
+      color: var(--gold);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.9rem, 6.2vw, 5.2rem);
+      line-height: 1.02;
+    }
+
+    h2 {
+      font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+      line-height: 1.08;
+    }
+
+    h1 em,
+    h2 em {
+      color: var(--terracotta);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .lead {
+      max-width: 34rem;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.4vw, 1.14rem);
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0.85rem 1.65rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      line-height: 1;
+      cursor: pointer;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn svg {
+      width: 17px;
+      height: 17px;
+      transition: transform 0.25s ease;
+    }
+
+    .btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    .btn-primary {
+      background: var(--olive);
+      color: var(--cream);
+      box-shadow: 0 14px 28px -18px rgba(34, 48, 31, 0.8);
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px -18px rgba(184, 92, 55, 0.9);
+    }
+
+    .btn-light {
+      background: var(--cream);
+      color: var(--olive-deep);
+    }
+
+    .btn-light:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border-color: var(--line);
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--olive);
+      background: rgba(53, 75, 52, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+      border-color: var(--line-dark);
+      background: transparent;
+      color: var(--cream);
+    }
+
+    .btn-outline-light:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      min-height: 44px;
+      padding: 0.65rem 1.3rem;
+      font-size: 0.88rem;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--olive);
+      font-weight: 600;
+      border-bottom: 1px solid rgba(53, 75, 52, 0.3);
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .text-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .text-link:hover {
+      color: var(--terracotta);
+      border-color: var(--terracotta);
+    }
+
+    .text-link:hover svg {
+      transform: translateX(3px);
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.is-scrolled {
+      border-bottom-color: var(--line);
+      background: rgba(248, 243, 233, 0.88);
+      box-shadow: 0 10px 30px -24px rgba(34, 48, 31, 0.45);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      backdrop-filter: blur(18px) saturate(140%);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+
+    .brand svg {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .brand:hover svg {
+      transform: rotate(-8deg);
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.42rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-name em {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.1rem, 2.4vw, 2.1rem);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-block: 6px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: var(--terracotta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.is-active {
+      color: var(--terracotta);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+      border-color: var(--olive);
+      background: rgba(53, 75, 52, 0.06);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid var(--line);
+      background: var(--cream-soft);
+      box-shadow: 0 30px 50px -30px rgba(34, 48, 31, 0.4);
+      animation: menu-in 0.25s ease both;
+    }
+
+    .mobile-nav[hidden] {
+      display: none;
+    }
+
+    .mobile-nav nav {
+      display: grid;
+      gap: 4px;
+      padding: 20px 24px 28px;
+    }
+
+    .mobile-nav a:not(.btn) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 2px;
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    .mobile-nav a:not(.btn) span {
+      color: var(--terracotta);
+    }
+
+    .mobile-nav .btn {
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    @keyframes menu-in {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      padding-top: clamp(7.5rem, 13vw, 10rem);
+      padding-bottom: clamp(3.5rem, 6vw, 5rem);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+    }
+
+    .hero-copy h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-copy .lead {
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 22px;
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 0.7rem 0;
+      color: var(--ink);
+      font-size: 0.94rem;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(32, 37, 31, 0.25);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-ghost svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .hero-ghost:hover {
+      color: var(--terracotta);
+      border-color: var(--terracotta);
+    }
+
+    .hero-ghost:hover svg {
+      transform: translateX(3px);
+    }
+
+    .hero-proof {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 18px;
+    }
+
+    .avatar-stack {
+      display: flex;
+    }
+
+    .avatar-stack img {
+      width: 42px;
+      height: 42px;
+      border: 3px solid var(--cream);
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: -12px;
+      box-shadow: 0 6px 14px -8px rgba(34, 48, 31, 0.6);
+    }
+
+    .avatar-stack img:first-child {
+      margin-left: 0;
+    }
+
+    .proof-text {
+      display: grid;
+      gap: 2px;
+    }
+
+    .stars {
+      display: inline-flex;
+      gap: 2px;
+      color: var(--gold);
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
+      line-height: 1;
+    }
+
+    .proof-text p {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .proof-text strong {
+      color: var(--ink);
+    }
+
+    .open-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--olive);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .open-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4f8a4b;
+      box-shadow: 0 0 0 3px rgba(79, 138, 75, 0.16);
+    }
+
+    .hero-media {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin-left: auto;
+    }
+
+    .hero-disc {
+      position: absolute;
+      top: -34px;
+      left: -46px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #d98e6b, var(--terracotta) 70%);
+      opacity: 0.32;
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      bottom: -26px;
+      right: -26px;
+      width: 180px;
+      height: 180px;
+      border: 1px dashed rgba(53, 75, 52, 0.35);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 250px 250px 28px 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-note {
+      position: absolute;
+      left: -28px;
+      bottom: 34px;
+      z-index: 3;
+      display: grid;
+      gap: 2px;
+      width: 230px;
+      padding: 18px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 18px;
+      background: rgba(251, 247, 239, 0.94);
+      box-shadow: 0 22px 45px -24px rgba(34, 48, 31, 0.5);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-note-label {
+      color: var(--terracotta);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .hero-note strong {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .hero-note > span:not(.hero-note-label) {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .hero-note a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      color: var(--olive);
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .hero-note a svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .hero-note a:hover {
+      color: var(--terracotta);
+    }
+
+    .hero-stamp {
+      position: absolute;
+      top: 24px;
+      right: -18px;
+      z-index: 3;
+      display: grid;
+      place-content: center;
+      width: 104px;
+      height: 104px;
+      border: 1px solid rgba(211, 162, 84, 0.7);
+      border-radius: 50%;
+      background: var(--cream);
+      text-align: center;
+      transform: rotate(8deg);
+      box-shadow: 0 14px 30px -18px rgba(34, 48, 31, 0.5);
+    }
+
+    .hero-stamp::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(53, 75, 52, 0.3);
+      border-radius: 50%;
+    }
+
+    .hero-stamp strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .hero-stamp small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .highlights {
+      border-block: 1px solid var(--line);
+      background: var(--cream-soft);
+    }
+
+    .highlights-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px 28px;
+      padding-block: 1.6rem;
+    }
+
+    .highlight {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .highlight-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      border: 1px solid rgba(53, 75, 52, 0.18);
+      border-radius: 50%;
+      background: rgba(53, 75, 52, 0.06);
+      color: var(--olive);
+    }
+
+    .highlight-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .highlight strong {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .highlight span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.76rem;
+      line-height: 1.4;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.8rem, 6vw, 5.5rem);
+      align-items: center;
+    }
+
+    .story {
+      background: var(--cream-deep);
+    }
+
+    .story-media {
+      position: relative;
+      max-width: 500px;
+    }
+
+    .story-main {
+      width: 86%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .story-small {
+      position: absolute;
+      right: 0;
+      bottom: -34px;
+      width: 47%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 9px solid var(--cream-deep);
+      border-radius: 50%;
+      box-shadow: var(--shadow-card);
+    }
+
+    .story-badge {
+      position: absolute;
+      top: -22px;
+      left: -18px;
+      display: grid;
+      place-content: center;
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: var(--olive);
+      color: var(--cream);
+      text-align: center;
+      transform: rotate(-6deg);
+      box-shadow: 0 18px 34px -20px rgba(34, 48, 31, 0.8);
+    }
+
+    .story-badge strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    .story-badge span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .story-copy {
+      max-width: 520px;
+    }
+
+    .story-copy h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .story-copy p {
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .story-quote {
+      margin: 1.8rem 0;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--terracotta);
+      color: var(--ink-soft);
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    .story-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 1.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .story-sign {
+      display: grid;
+      gap: 1px;
+    }
+
+    .story-sign strong {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 500;
+    }
+
+    .story-sign span {
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .menu {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(211, 162, 84, 0.13), transparent 32rem),
+        radial-gradient(circle at 88% 92%, rgba(184, 92, 55, 0.12), transparent 30rem),
+        var(--olive-deep);
+      color: var(--cream);
+    }
+
+    .menu::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(248, 243, 233, 0.13) 1px, transparent 1px);
+      background-size: 26px 26px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+      pointer-events: none;
+    }
+
+    .menu .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem 4rem;
+      align-items: end;
+      margin-bottom: clamp(2.2rem, 4vw, 3.2rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 25rem;
+      justify-self: end;
+    }
+
+    .menu h2 em,
+    .reserve-info h2 em {
+      color: var(--terracotta-light);
+    }
+
+    .menu .section-head p {
+      color: rgba(248, 243, 233, 0.68);
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2.2rem;
+    }
+
+    .tab {
+      padding: 0.7rem 1.25rem;
+      border: 1px solid var(--line-dark);
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(248, 243, 233, 0.75);
+      font-size: 0.86rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tab:hover {
+      border-color: rgba(211, 162, 84, 0.6);
+      color: var(--gold);
+    }
+
+    .tab[aria-selected="true"] {
+      border-color: var(--cream);
+      background: var(--cream);
+      color: var(--olive-deep);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .menu-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line-dark);
+      border-radius: 20px;
+      background: rgba(248, 243, 233, 0.045);
+      transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(211, 162, 84, 0.45);
+      background: rgba(248, 243, 233, 0.07);
+    }
+
+    .menu-card[hidden] {
+      display: none;
+    }
+
+    .menu-card-media {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+
+    .menu-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .menu-card:hover .menu-card-media img {
+      transform: scale(1.05);
+    }
+
+    .price {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(248, 243, 233, 0.94);
+      color: var(--olive-deep);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .menu-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px 20px 22px;
+    }
+
+    .menu-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .menu-card h3 {
+      font-size: 1.22rem;
+      line-height: 1.25;
+      font-weight: 500;
+    }
+
+    .tag {
+      flex-shrink: 0;
+      padding: 3px 9px;
+      border: 1px solid rgba(211, 162, 84, 0.4);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .menu-card p {
+      color: rgba(248, 243, 233, 0.66);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .menu-foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 2.4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .menu-foot p {
+      color: rgba(248, 243, 233, 0.62);
+      font-size: 0.85rem;
+      max-width: 36rem;
+    }
+
+    @keyframes card-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .experience {
+      background: var(--cream);
+    }
+
+    .experience .split {
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .exp-copy h2 {
+      margin-bottom: 1.4rem;
+    }
+
+    .exp-copy > p {
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 1.2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .feature {
+      display: flex;
+      gap: 15px;
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: rgba(53, 75, 52, 0.08);
+      color: var(--olive);
+    }
+
+    .feature-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.55;
+    }
+
+    .exp-media {
+      position: relative;
+      max-width: 520px;
+      margin-left: auto;
+    }
+
+    .exp-media > img {
+      width: 100%;
+      aspect-ratio: 5 / 4;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .exp-quote {
+      position: absolute;
+      right: -18px;
+      bottom: -30px;
+      max-width: 310px;
+      padding: 22px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 18px;
+      background: var(--cream-soft);
+      box-shadow: var(--shadow-card);
+    }
+
+    .exp-quote svg {
+      width: 26px;
+      height: 26px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .exp-quote p {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.45;
+      margin-bottom: 8px;
+    }
+
+    .exp-quote span {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .reviews {
+      background: var(--cream-deep);
+    }
+
+    .reviews-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1.5rem 3rem;
+      margin-bottom: 2.6rem;
+    }
+
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .rating-summary strong {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .review-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 28px;
+      border: 1px solid rgba(32, 37, 31, 0.08);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: 0 18px 40px -34px rgba(34, 48, 31, 0.5);
+    }
+
+    .review-card blockquote {
+      flex: 1;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .review-author img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .review-author strong {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .review-author span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .reserve {
+      background: var(--cream);
+    }
+
+    .reserve-card {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: 0 40px 80px -50px rgba(34, 48, 31, 0.55);
+    }
+
+    .reserve-info {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(2.2rem, 4vw, 3.4rem);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(211, 162, 84, 0.2), transparent 22rem),
+        radial-gradient(circle at 0% 100%, rgba(184, 92, 55, 0.24), transparent 20rem),
+        var(--olive-deep);
+      color: var(--cream);
+    }
+
+    .reserve-info::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -70px;
+      width: 220px;
+      height: 220px;
+      border: 1px dashed rgba(248, 243, 233, 0.22);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .reserve-info h2 {
+      margin-bottom: 1rem;
+    }
+
+    .reserve-info > p {
+      color: rgba(248, 243, 233, 0.7);
+      font-size: 0.92rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1.15rem;
+    }
+
+    .contact-list li {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .contact-list svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--gold);
+    }
+
+    .contact-list strong {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(248, 243, 233, 0.55);
+      margin-bottom: 1px;
+    }
+
+    .contact-list span,
+    .contact-list a {
+      color: var(--cream);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .contact-list a:hover {
+      color: var(--gold);
+    }
+
+    .reserve-note {
+      margin-top: 2.2rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line-dark);
+      color: rgba(248, 243, 233, 0.6);
+      font-size: 0.78rem;
+      line-height: 1.55;
+    }
+
+    .reserve-note a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .reserve-form-wrap {
+      padding: clamp(2.2rem, 4.5vw, 3.6rem);
+    }
+
+    .reserve-form-wrap h3 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+    }
+
+    .reserve-form-wrap form > p {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink-soft);
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 14px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .field input::placeholder {
+      color: #687062;
+    }
+
+    .field input:hover,
+    .field select:hover {
+      border-color: rgba(53, 75, 52, 0.35);
+    }
+
+    .field input:focus,
+    .field select:focus {
+      outline: none;
+      border-color: var(--olive);
+      background: var(--white);
+      box-shadow: 0 0 0 4px rgba(53, 75, 52, 0.12);
+    }
+
+    .field select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236c7367' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .form-grid .btn {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .form-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .form-success {
+      display: grid;
+      place-items: center;
+      gap: 10px;
+      min-height: 420px;
+      text-align: center;
+      animation: card-in 0.4s ease both;
+    }
+
+    .form-success[hidden] {
+      display: none;
+    }
+
+    .success-icon {
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(53, 75, 52, 0.1);
+      color: var(--olive);
+      margin-bottom: 4px;
+    }
+
+    .success-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .form-success h3 {
+      font-size: 1.7rem;
+    }
+
+    .form-success p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 24rem;
+    }
+
+    .form-success .btn {
+      margin-top: 10px;
+    }
+
+    .site-footer {
+      background: var(--olive-deep);
+      color: var(--cream);
+      padding-top: clamp(3.5rem, 7vw, 5.5rem);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr 0.9fr 1.1fr;
+      gap: 2.5rem 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .footer-brand .brand {
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-brand .brand-name em {
+      color: var(--gold);
+    }
+
+    .footer-brand p {
+      max-width: 24rem;
+      color: rgba(248, 243, 233, 0.62);
+      font-size: 0.86rem;
+      line-height: 1.65;
+      margin-bottom: 1.4rem;
+    }
+
+    .socials {
+      display: flex;
+      gap: 9px;
+    }
+
+    .socials a {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line-dark);
+      border-radius: 50%;
+      color: rgba(248, 243, 233, 0.8);
+      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .socials a:hover {
+      border-color: var(--gold);
+      background: rgba(211, 162, 84, 0.12);
+      color: var(--gold);
+    }
+
+    .socials svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 1rem;
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-col li,
+    .footer-col a,
+    .footer-col address {
+      color: rgba(248, 243, 233, 0.66);
+      font-size: 0.86rem;
+      font-style: normal;
+      line-height: 1.6;
+    }
+
+    .footer-col a:hover {
+      color: var(--cream);
+    }
+
+    .footer-col .hours {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .footer-col .hours span:last-child {
+      color: rgba(248, 243, 233, 0.55);
+      text-align: right;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
+      padding-block: 1.4rem;
+      border-top: 1px solid var(--line-dark);
+      color: rgba(248, 243, 233, 0.55);
+      font-size: 0.74rem;
+    }
+
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .legal-links a:hover {
+      color: var(--cream);
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--d, 0s);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-media {
+        max-width: 430px;
+      }
+
+      .hero-note {
+        left: -14px;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.2fr 0.8fr 1fr;
+      }
+
+      .footer-col:last-child {
+        grid-column: 2 / -1;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+      }
+
+      .hero-media {
+        margin-inline: auto;
+        max-width: 470px;
+      }
+
+      .highlights-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .story-media,
+      .story-copy {
+        max-width: 540px;
+        margin-inline: auto;
+      }
+
+      .story-small {
+        bottom: -20px;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .section-head p {
+        justify-self: start;
+      }
+
+      .experience .split {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .exp-media {
+        order: -1;
+        max-width: 560px;
+        margin-inline: auto;
+      }
+
+      .exp-copy {
+        max-width: 620px;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+        max-width: 620px;
+      }
+
+      .reserve-card {
+        grid-template-columns: 1fr;
+      }
+
+      .reserve-info {
+        padding-bottom: 2.6rem;
+      }
+
+      .reserve-info::after {
+        right: -50px;
+        bottom: -90px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-inline: 20px;
+      }
+
+      .nav {
+        min-height: 70px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 6.5rem;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-ghost {
+        justify-content: center;
+      }
+
+      .hero-note {
+        left: 10px;
+        bottom: 18px;
+        width: 205px;
+        padding: 14px 16px;
+      }
+
+      .hero-stamp {
+        width: 88px;
+        height: 88px;
+        right: -6px;
+        top: 16px;
+      }
+
+      .hero-stamp strong {
+        font-size: 1.15rem;
+      }
+
+      .hero-media::after {
+        width: 130px;
+        height: 130px;
+        right: -10px;
+        bottom: -16px;
+      }
+
+      .hero-disc {
+        width: 220px;
+        height: 220px;
+        left: -24px;
+        top: -24px;
+      }
+
+      .highlights-inner {
+        gap: 16px;
+        padding-block: 1.3rem;
+      }
+
+      .highlight-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .highlight strong {
+        font-size: 0.82rem;
+      }
+
+      .highlight span {
+        font-size: 0.72rem;
+      }
+
+      .story-main {
+        width: 90%;
+      }
+
+      .story-badge {
+        width: 92px;
+        height: 92px;
+        top: -16px;
+        left: -6px;
+      }
+
+      .story-badge strong {
+        font-size: 1.6rem;
+      }
+
+      .story-badge span {
+        font-size: 0.5rem;
+      }
+
+      .story-small {
+        width: 46%;
+        border-width: 7px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-foot {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .exp-quote {
+        right: 0;
+        bottom: -42px;
+        max-width: 280px;
+        padding: 18px 20px;
+      }
+
+      .exp-media {
+        margin-bottom: 2.6rem;
+      }
+
+      .review-card {
+        padding: 24px;
+      }
+
+      .reviews-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-success {
+        min-height: 360px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-col:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .brand-name {
+        font-size: 1.24rem;
+      }
+
+      .brand svg {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hero-note {
+        width: 190px;
+      }
+
+      .highlights-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .js .reveal,
+      .js .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body id="inicio">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Casa Oliva, ir al inicio">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" fill="#354B34" />
+          <path d="M12 28c0-8 5-14 16-16-2 11-8 16-16 16Z" fill="#F8F3E9" />
+          <path d="M12 28c4-5 8-8 13-10" stroke="#354B34" stroke-width="1.4" stroke-linecap="round" fill="none" />
+        </svg>
+        <span class="brand-name">Casa <em>Oliva</em></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#casa">La casa</a>
+        <a href="#menu">Carta</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#reservar">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary btn-sm nav-cta" href="#reservar">Reservar mesa</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <nav aria-label="Navegación móvil">
+        <a href="#casa">La casa <span aria-hidden="true">→</span></a>
+        <a href="#menu">Carta <span aria-hidden="true">→</span></a>
+        <a href="#experiencia">Experiencia <span aria-hidden="true">→</span></a>
+        <a href="#opiniones">Opiniones <span aria-hidden="true">→</span></a>
+        <a href="#reservar">Contacto <span aria-hidden="true">→</span></a>
+        <a class="btn btn-primary" href="#reservar">Reservar mesa</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Cocina mediterránea · Valencia</p>
+          <h1 id="hero-title">Sabor de casa,<br /><em>hecho con alma.</em></h1>
+          <p class="lead">Producto de temporada, recetas de siempre y una mesa donde el tiempo pasa despacio. Bienvenido a Casa Oliva.</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#reservar">
+              Reservar una mesa
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <a class="hero-ghost" href="#menu">
+              Descubrir la carta
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+            </a>
+          </div>
+
+          <div class="hero-proof">
+            <div class="avatar-stack" aria-hidden="true">
+              <img src="assets/avatar-1.webp" alt="" width="42" height="42" />
+              <img src="assets/avatar-2.webp" alt="" width="42" height="42" />
+              <img src="assets/avatar-3.webp" alt="" width="42" height="42" />
+            </div>
+            <div class="proof-text">
+              <span class="stars" aria-hidden="true">★★★★★</span>
+              <p><strong>4,9 / 5</strong> · Más de 1.200 reseñas</p>
+            </div>
+            <p class="open-status">Hoy abierto · 13:00–23:30</p>
+          </div>
+        </div>
+
+        <div class="hero-media reveal" style="--d: 0.12s">
+          <div class="hero-disc" aria-hidden="true"></div>
+          <img class="hero-img" src="assets/hero.webp" alt="Pasta fresca con pesto, tomate y albahaca servida en un plato blanco" width="1000" height="1250" fetchpriority="high" />
+          <div class="hero-note">
+            <span class="hero-note-label">Hoy en la carta</span>
+            <strong>Menú degustación</strong>
+            <span>5 pases · 48 € por persona</span>
+            <a href="#menu">Ver los platos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+          <div class="hero-stamp" aria-hidden="true">
+            <strong>12</strong>
+            <small>años en el barrio</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlights" aria-label="Lo que nos define">
+      <div class="container highlights-inner">
+        <div class="highlight">
+          <span class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 3c1 2 2 4.5 1 9a7 7 0 0 1-9 8Z" /><path d="M2 21c0-3 1.9-5.5 5-6" /></svg>
+          </span>
+          <div>
+            <strong>Producto local</strong>
+            <span>De huerta y lonja</span>
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M4 11v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7" /><path d="M8 16h.01M12 16h.01M16 16h.01" /></svg>
+          </span>
+          <div>
+            <strong>Cocina abierta</strong>
+            <span>Sin secretos</span>
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 6a5 5 0 0 1-6 0L8 2Z" /><path d="M12 8v9" /><path d="M8 22h8" /><path d="M12 17c-2.5 0-4-1.3-4-3h8c0 1.7-1.5 3-4 3Z" /></svg>
+          </span>
+          <div>
+            <strong>Vinos naturales</strong>
+            <span>Pequeñas bodegas</span>
+          </div>
+        </div>
+        <div class="highlight">
+          <span class="highlight-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z" /></svg>
+          </span>
+          <div>
+            <strong>Hecho con calma</strong>
+            <span>Sin prisa, sin ruido</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story" id="casa" aria-labelledby="story-title">
+      <div class="container split">
+        <div class="story-media reveal">
+          <img class="story-main" src="assets/story-main.webp" alt="Comedor de Casa Oliva con mesas de madera y luz cálida" width="900" height="1100" loading="lazy" decoding="async" />
+          <img class="story-small" src="assets/story-chef.webp" alt="Los chefs de Casa Oliva cocinando juntos en la cocina" width="700" height="700" loading="lazy" decoding="async" />
+          <div class="story-badge" aria-hidden="true">
+            <strong>12</strong>
+            <span>años<br />cocinando</span>
+          </div>
+        </div>
+
+        <div class="story-copy reveal" style="--d: 0.1s">
+          <p class="eyebrow">Nuestra esencia</p>
+          <h2 id="story-title">Recetas de siempre,<br /><em>mirada de hoy.</em></h2>
+          <p>Casa Oliva nació en 2012 con una idea sencilla: cocinar como en casa, pero con el producto de los mejores productores de la Comunidad Valenciana. Sin artificios, sin prisas y con una despensa que cambia al ritmo de las estaciones.</p>
+          <p>Cada mañana recibimos verduras de la huerta, pescado de la lonja y pan de masa madre del horno del barrio. Después solo queda encender los fuegos y sentar a la mesa.</p>
+          <blockquote class="story-quote">«Cocinar es cuidar a quien se sienta a la mesa. Todo lo demás viene solo.»</blockquote>
+
+          <div class="story-foot">
+            <div class="story-sign">
+              <strong>Marco &amp; Lucía</strong>
+              <span>Fundadores y chefs</span>
+            </div>
+            <a class="text-link" href="#menu">
+              Conoce nuestra cocina
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section menu" id="menu" aria-labelledby="menu-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow eyebrow-light">La carta</p>
+            <h2 id="menu-title">Para compartir,<br /><em>sin prisa.</em></h2>
+          </div>
+          <p>Una carta corta que cambia cuatro veces al año. Producto de temporada, elaboraciones propias y raciones pensadas para compartir.</p>
+        </div>
+
+        <div class="tabs reveal" role="tablist" aria-label="Categorías de la carta">
+          <button class="tab" type="button" role="tab" id="tab-todos" aria-selected="true" aria-controls="menuGrid" data-filter="todos">Todo</button>
+          <button class="tab" type="button" role="tab" id="tab-entrantes" aria-selected="false" aria-controls="menuGrid" data-filter="entrantes" tabindex="-1">Entrantes</button>
+          <button class="tab" type="button" role="tab" id="tab-principales" aria-selected="false" aria-controls="menuGrid" data-filter="principales" tabindex="-1">Principales</button>
+          <button class="tab" type="button" role="tab" id="tab-postres" aria-selected="false" aria-controls="menuGrid" data-filter="postres" tabindex="-1">Postres</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid" role="tabpanel" aria-labelledby="tab-todos">
+          <article class="menu-card" data-category="entrantes">
+            <div class="menu-card-media">
+              <img src="assets/dish-burrata.webp" alt="Ensalada de burrata con tomate, aceitunas y verduras frescas" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">12 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Burrata, tomate y albahaca</h3>
+                <span class="tag">Vegetariano</span>
+              </div>
+              <p>Burrata cremosa de Puglia, tomate de la huerta, albahaca fresca y aceite de oliva virgen extra.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="entrantes">
+            <div class="menu-card-media">
+              <img src="assets/dish-pan.webp" alt="Hogazas de pan de masa madre artesanal" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">6 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Pan de masa madre</h3>
+                <span class="tag">Vegano</span>
+              </div>
+              <p>Horneado cada mañana en el barrio, con mantequilla de oliva y sal de escamas.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="entrantes">
+            <div class="menu-card-media">
+              <img src="assets/dish-gambas.webp" alt="Gambas al ajillo servidas en un plato blanco con limón" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">16 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Gambas al ajillo</h3>
+                <span class="tag">Sin gluten</span>
+              </div>
+              <p>Gamba de la lonja de Valencia, ajo laminado, guindilla y un buen chorro de aceite de oliva.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="principales">
+            <div class="menu-card-media">
+              <img src="assets/dish-pasta.webp" alt="Pasta fresca con pesto, tomate y albahaca" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">18 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Tagliatelle al ragú</h3>
+                <span class="tag">Casero</span>
+              </div>
+              <p>Pasta fresca amasada a mano, ragú de ternera cocinado a fuego lento y parmesano curado 24 meses.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="principales">
+            <div class="menu-card-media">
+              <img src="assets/dish-lubina.webp" alt="Lubina a la brasa con verduras y salsa verde" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">22 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Lubina a la brasa</h3>
+                <span class="tag">Del día</span>
+              </div>
+              <p>Lubina de lonja, verduras de temporada a la brasa y refrito de ajos y hierbas frescas.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="principales">
+            <div class="menu-card-media">
+              <img src="assets/dish-costilla.webp" alt="Costilla de cerdo glaseada con tomate y patatas" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">21 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Costilla ibérica glaseada</h3>
+                <span class="tag">Sin gluten</span>
+              </div>
+              <p>Costilla ibérica cocinada 8 horas, glaseado de miel y romero, tomate aliñado y patatas panadera.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="postres">
+            <div class="menu-card-media">
+              <img src="assets/dish-chocolate.webp" alt="Tarta de chocolate con ganache y crema de avellanas" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">8 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Tarta de chocolate</h3>
+                <span class="tag">Casero</span>
+              </div>
+              <p>Chocolate negro 70 %, ganache sedosa y crema de avellanas tostadas. Para los muy golosos.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="postres">
+            <div class="menu-card-media">
+              <img src="assets/dish-pannacotta.webp" alt="Panna cotta de vainilla con fresas frescas" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">7 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Panna cotta de vainilla</h3>
+                <span class="tag">Sin gluten</span>
+              </div>
+              <p>Nata infusionada con vainilla de Madagascar y fresas de temporada maceradas en su jugo.</p>
+            </div>
+          </article>
+
+          <article class="menu-card" data-category="postres">
+            <div class="menu-card-media">
+              <img src="assets/dish-cheesecake.webp" alt="Tarta de queso con frambuesas frescas" width="800" height="600" loading="lazy" decoding="async" />
+              <span class="price">8 €</span>
+            </div>
+            <div class="menu-card-body">
+              <div class="menu-card-top">
+                <h3>Tarta de queso y frambuesas</h3>
+                <span class="tag">Favorito</span>
+              </div>
+              <p>Cheesecake horneada al estilo vasco, frambuesas frescas y un toque de pistacho.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="menu-foot">
+          <p>¿Alguna alergia o intolerancia? Cuéntanoslo al reservar y adaptamos el menú. También tenemos opciones vegetarianas y veganas.</p>
+          <a class="btn btn-outline-light" href="#reservar">Reservar mesa</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experiencia" aria-labelledby="experience-title">
+      <div class="container split">
+        <div class="exp-copy reveal">
+          <p class="eyebrow">La experiencia</p>
+          <h2 id="experience-title">La mesa del chef:<br /><em>seis platos, una historia.</em></h2>
+          <p>Siéntate frente a la cocina y deja que Marco y Lucía te cuenten la temporada a través de seis pases. Un menú diferente cada semana, maridado con vinos naturales de pequeñas bodegas.</p>
+
+          <ul class="feature-list">
+            <li class="feature">
+              <span class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 6 0V3M7 3v18M17 3c-1.5 2-2 4-2 7s.5 4 2 4 2-1 2-4-.5-5-2-7ZM17 14v7" /></svg>
+              </span>
+              <div>
+                <strong>Seis pases de temporada</strong>
+                <p>Un recorrido por la huerta y la lonja, con elaboraciones que no encontrarás en la carta.</p>
+              </div>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l-1 6a5 5 0 0 1-6 0L8 2Z" /><path d="M12 8v9M8 22h8M12 17c-2.5 0-4-1.3-4-3h8c0 1.7-1.5 3-4 3Z" /></svg>
+              </span>
+              <div>
+                <strong>Maridaje opcional</strong>
+                <p>Cuatro vinos naturales seleccionados para acompañar cada plato. +22 € por persona.</p>
+              </div>
+            </li>
+            <li class="feature">
+              <span class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" /><circle cx="12" cy="12" r="3" /></svg>
+              </span>
+              <div>
+                <strong>Solo 10 plazas</strong>
+                <p>Una barra íntima, dos turnos por noche y toda la atención puesta en tu mesa.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a class="btn btn-primary" href="#reservar">
+            Reservar la mesa del chef
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+
+        <div class="exp-media reveal" style="--d: 0.1s">
+          <img src="assets/experience.webp" alt="Mesa preparada en el comedor de Casa Oliva junto a una ventana" width="1100" height="900" loading="lazy" decoding="async" />
+          <div class="exp-quote">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 5C5 5 3 7 3 9.5S4.8 14 7.2 14c.3 0 .6 0 .9-.1-.6 1.9-2.1 3.3-4.1 4l.7 1.6c3.3-1 5.8-3.8 5.8-7.6V9.5C10.5 7 9.7 5 7.5 5Zm10 0C15 5 13 7 13 9.5s1.8 4.5 4.2 4.5c.3 0 .6 0 .9-.1-.6 1.9-2.1 3.3-4.1 4l.7 1.6c3.3-1 5.8-3.8 5.8-7.6V9.5C20.5 7 19.7 5 17.5 5Z" /></svg>
+            <p>«La mejor mesa de Valencia para celebrar sin ruido.»</p>
+            <span>Guía Gastronómica · 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews" id="opiniones" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="reviews-head reveal">
+          <div>
+            <p class="eyebrow">Opiniones</p>
+            <h2 id="reviews-title">Lo que se dice<br /><em>en la mesa de al lado.</em></h2>
+          </div>
+          <div class="rating-summary">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            <strong>4,9</strong>
+            <span>/ 5 · Más de 1.200 reseñas</span>
+          </div>
+        </div>
+
+        <div class="review-grid">
+          <figure class="review-card reveal">
+            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+            <blockquote>«Fuimos por el menú degustación y salimos enamorados. Cada plato tenía algo que contar y el servicio fue cercano sin ser invasivo. Volveremos.»</blockquote>
+            <figcaption class="review-author">
+              <img src="assets/avatar-1.webp" alt="" width="44" height="44" loading="lazy" />
+              <div>
+                <strong>Claudia Ferrer</strong>
+                <span>Google · Hace 2 semanas</span>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="review-card reveal" style="--d: 0.08s">
+            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+            <blockquote>«El sitio perfecto para una cena sin prisa. La burrata y la costilla ibérica están a otro nivel. Nos encantó poder ver la cocina desde la mesa.»</blockquote>
+            <figcaption class="review-author">
+              <img src="assets/avatar-2.webp" alt="" width="44" height="44" loading="lazy" />
+              <div>
+                <strong>Álvaro Sanz</strong>
+                <span>Google · Hace 1 mes</span>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="review-card reveal" style="--d: 0.16s">
+            <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+            <blockquote>«Celebramos nuestro aniversario y cuidaron cada detalle. Vinos naturales increíbles y un postre de queso que todavía recordamos. Muy recomendable.»</blockquote>
+            <figcaption class="review-author">
+              <img src="assets/avatar-3.webp" alt="" width="44" height="44" loading="lazy" />
+              <div>
+                <strong>Marta Ibáñez</strong>
+                <span>TripAdvisor · Hace 1 mes</span>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reserve" id="reservar" aria-labelledby="reserve-title">
+      <div class="container">
+        <div class="reserve-card reveal">
+          <div class="reserve-info">
+            <p class="eyebrow eyebrow-light">Reservas</p>
+            <h2 id="reserve-title">Tu mesa<br /><em>te espera.</em></h2>
+            <p>Reserva online en menos de un minuto. Para celebraciones, grupos o cualquier duda, llámanos y lo preparamos todo juntos.</p>
+
+            <ul class="contact-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="2.5" /></svg>
+                <div>
+                  <strong>Dirección</strong>
+                  <span>Carrer de la Pau, 18 · 46001 Valencia</span>
+                </div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" /></svg>
+                <div>
+                  <strong>Teléfono</strong>
+                  <a href="tel:+34960123456">+34 960 123 456</a>
+                </div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+                <div>
+                  <strong>Horario</strong>
+                  <span>Mar–Dom · 13:00–16:00<br />y 20:00–23:30 · Lunes cerrado</span>
+                </div>
+              </li>
+            </ul>
+
+            <p class="reserve-note">Para grupos de más de 8 personas, escríbenos a <a href="mailto:hola@casaoliva.es">hola@casaoliva.es</a>.</p>
+          </div>
+
+          <div class="reserve-form-wrap">
+            <form id="reservationForm">
+              <h3>Reserva online</h3>
+              <p>Te confirmaremos por email en menos de 2 horas.</p>
+
+              <div class="form-grid">
+                <div class="field">
+                  <label for="resName">Nombre y apellidos</label>
+                  <input id="resName" name="name" type="text" autocomplete="name" placeholder="Ana García" required />
+                </div>
+                <div class="field">
+                  <label for="resEmail">Email</label>
+                  <input id="resEmail" name="email" type="email" autocomplete="email" placeholder="ana@email.com" required />
+                </div>
+                <div class="field">
+                  <label for="resDate">Fecha</label>
+                  <input id="resDate" name="date" type="date" required />
+                </div>
+                <div class="field">
+                  <label for="resTime">Hora</label>
+                  <select id="resTime" name="time" required>
+                    <option value="" selected disabled>Elige una hora</option>
+                    <option>13:00</option>
+                    <option>13:30</option>
+                    <option>14:00</option>
+                    <option>14:30</option>
+                    <option>20:00</option>
+                    <option>20:30</option>
+                    <option>21:00</option>
+                    <option>21:30</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="resGuests">Personas</label>
+                  <select id="resGuests" name="guests" required>
+                    <option value="1">1 persona</option>
+                    <option value="2" selected>2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 personas</option>
+                    <option value="6">6 personas</option>
+                    <option value="7">7 personas</option>
+                    <option value="8">8 personas</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="resOccasion">Ocasión</label>
+                  <select id="resOccasion" name="occasion">
+                    <option value="">Sin ocasión especial</option>
+                    <option>Cumpleaños</option>
+                    <option>Aniversario</option>
+                    <option>Cena de empresa</option>
+                    <option>Otra celebración</option>
+                  </select>
+                </div>
+                <div class="field field-full">
+                  <label for="resNotes">¿Algo que debamos saber? <span aria-hidden="true">(opcional)</span></label>
+                  <input id="resNotes" name="notes" type="text" placeholder="Alergias, intolerancias, trona, mascota..." />
+                </div>
+                <div class="field-full">
+                  <button class="btn btn-primary" type="submit">
+                    Confirmar reserva
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                  </button>
+                  <p class="form-note">Al reservar aceptas nuestra política de privacidad. Sin cargos por cancelación.</p>
+                </div>
+              </div>
+            </form>
+
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+              <span class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12 5 5L20 6" /></svg>
+              </span>
+              <h3>¡Reserva recibida!</h3>
+              <p id="successText">Gracias. Te enviaremos la confirmación por email en menos de dos horas.</p>
+              <button class="btn btn-outline btn-sm" id="resetForm" type="button">Hacer otra reserva</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio" aria-label="Casa Oliva, ir al inicio">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="20" fill="#D3A254" />
+            <path d="M12 28c0-8 5-14 16-16-2 11-8 16-16 16Z" fill="#22301F" />
+            <path d="M12 28c4-5 8-8 13-10" stroke="#D3A254" stroke-width="1.4" stroke-linecap="round" fill="none" />
+          </svg>
+          <span class="brand-name">Casa <em>Oliva</em></span>
+        </a>
+        <p>Cocina mediterránea de temporada en el centro de Valencia. Producto local, vinos naturales y mesas para quedarse.</p>
+        <div class="socials">
+          <a href="#" aria-label="Casa Oliva en Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+          </a>
+          <a href="#" aria-label="Casa Oliva en Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A4.5 4.5 0 0 0 8 7.5V10H5v4h3v7h4v-7h3.5l.5-4H12V7.5a1 1 0 0 1 1-1h2V3Z" /></svg>
+          </a>
+          <a href="#" aria-label="Casa Oliva en TripAdvisor">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="12" r="4" /><circle cx="17" cy="12" r="4" /><path d="M7 16c2 2 8 2 10 0" /><path d="M3 8h18" /></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#casa">La casa</a></li>
+          <li><a href="#menu">Carta</a></li>
+          <li><a href="#experiencia">Mesa del chef</a></li>
+          <li><a href="#opiniones">Opiniones</a></li>
+          <li><a href="#reservar">Reservas</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <ul>
+          <li class="hours"><span>Martes–Jueves</span><span>13:00–16:00<br />20:00–23:00</span></li>
+          <li class="hours"><span>Viernes–Sábado</span><span>13:00–16:30<br />20:00–23:30</span></li>
+          <li class="hours"><span>Domingo</span><span>13:00–16:00</span></li>
+          <li class="hours"><span>Lunes</span><span>Cerrado</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Encuéntranos</h4>
+        <address>
+          Carrer de la Pau, 18<br />
+          46001 Valencia, España<br /><br />
+          <a href="tel:+34960123456">+34 960 123 456</a><br />
+          <a href="mailto:hola@casaoliva.es">hola@casaoliva.es</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year">2026</span> Casa Oliva. Todos los derechos reservados.</p>
+      <div class="legal-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Aviso legal</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById("siteHeader");
+    const navToggle = document.getElementById("navToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    const setHeaderState = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+    setHeaderState();
+    window.addEventListener("scroll", setHeaderState, { passive: true });
+
+    const closeMenu = () => {
+      mobileNav.hidden = true;
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Abrir menú");
+    };
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+      navToggle.setAttribute("aria-expanded", String(!isOpen));
+      navToggle.setAttribute("aria-label", isOpen ? "Abrir menú" : "Cerrar menú");
+      mobileNav.hidden = isOpen;
+    });
+
+    mobileNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      );
+      revealItems.forEach((item) => revealObserver.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+    }
+
+    const tabs = Array.from(document.querySelectorAll(".tab"));
+    const menuCards = Array.from(document.querySelectorAll(".menu-card"));
+    const menuGrid = document.getElementById("menuGrid");
+
+    const filterMenu = (filter) => {
+      menuCards.forEach((card, index) => {
+        const matches = filter === "todos" || card.dataset.category === filter;
+        card.hidden = !matches;
+        if (matches && filter !== "todos") {
+          card.style.animation = "none";
+          void card.offsetWidth;
+          card.style.animation = `card-in 0.4s ${index * 0.04}s ease both`;
+        }
+      });
+    };
+
+    const selectTab = (tab) => {
+      tabs.forEach((item) => {
+        const isSelected = item === tab;
+        item.setAttribute("aria-selected", String(isSelected));
+        item.tabIndex = isSelected ? 0 : -1;
+      });
+      menuGrid.setAttribute("aria-labelledby", tab.id);
+      filterMenu(tab.dataset.filter);
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        let targetIndex = index;
+        if (event.key === "ArrowRight") targetIndex = (index + 1) % tabs.length;
+        if (event.key === "ArrowLeft") targetIndex = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home") targetIndex = 0;
+        if (event.key === "End") targetIndex = tabs.length - 1;
+        if (targetIndex !== index) {
+          event.preventDefault();
+          tabs[targetIndex].focus();
+          selectTab(tabs[targetIndex]);
+        }
+      });
+    });
+
+    const sections = Array.from(document.querySelectorAll("main section[id]"));
+    const navLinks = Array.from(document.querySelectorAll(".nav-links a"));
+    if ("IntersectionObserver" in window) {
+      const navObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach((link) => {
+              link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
+            });
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+      );
+      sections.forEach((section) => navObserver.observe(section));
+    }
+
+    const dateInput = document.getElementById("resDate");
+    const today = new Date();
+    const pad = (value) => String(value).padStart(2, "0");
+    const minDate = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
+    dateInput.min = minDate;
+
+    const form = document.getElementById("reservationForm");
+    const success = document.getElementById("formSuccess");
+    const successText = document.getElementById("successText");
+    const resetButton = document.getElementById("resetForm");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const data = new FormData(form);
+      const name = String(data.get("name")).trim().split(" ")[0] || "de nuevo";
+      const dateValue = String(data.get("date"));
+      const date = dateValue
+        ? new Date(`${dateValue}T12:00:00`).toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long" })
+        : "";
+      const time = data.get("time");
+      const guests = data.get("guests");
+
+      successText.textContent = `${name}, tu mesa para ${guests} ${guests === "1" ? "persona" : "personas"} el ${date} a las ${time} está pendiente de confirmación. Te escribiremos en menos de dos horas.`;
+      form.hidden = true;
+      success.hidden = false;
+      success.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    resetButton.addEventListener("click", () => {
+      form.reset();
+      dateInput.min = minDate;
+      form.hidden = false;
+      success.hidden = true;
+      document.getElementById("resName").focus();
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

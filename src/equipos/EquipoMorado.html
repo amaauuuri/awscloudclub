@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipo Morado | AWS Cloud Club ITP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --equipo: #7c3aed;
+      --equipo-oscuro: #4c1d95;
+      --equipo-claro: #f5f3ff;
+      --equipo-borde: #c4b5fd;
+      --equipo-sombra: rgba(124, 58, 237, 0.35);
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .equipo-card {
+      border-color: var(--equipo-borde);
+      background: linear-gradient(145deg, #ffffff 0%, var(--equipo-claro) 100%);
+      box-shadow: 0 24px 55px -34px var(--equipo-sombra);
+    }
+
+    .equipo-accent {
+      background: var(--equipo);
+    }
+
+    .equipo-title {
+      color: var(--equipo-oscuro);
+    }
+
+    .equipo-badge {
+      color: var(--equipo-oscuro);
+      border-color: var(--equipo-borde);
+    }
+
+    .equipo-dot {
+      background: var(--equipo);
+    }
+
+    .equipo-code {
+      color: var(--equipo-oscuro);
+      background: var(--equipo-claro);
+    }
+  </style>
+</head>
+<body>
+  <article class="equipo-card mx-auto flex w-full max-w-md flex-col items-center gap-4 rounded-3xl border-2 p-8 text-center">
+    <span class="equipo-accent h-1.5 w-16 rounded-full" aria-hidden="true"></span>
+    <span class="equipo-badge inline-flex items-center gap-2 rounded-full border bg-white px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.18em]">
+      <span class="equipo-dot h-2 w-2 rounded-full" aria-hidden="true"></span>
+      Equipo
+    </span>
+    <h1 class="equipo-title text-2xl font-black tracking-tight sm:text-3xl">Equipo Morado</h1>
+    <p class="text-sm font-medium text-slate-600">Este es el equipo Morado</p>
+    <span class="equipo-code rounded-full px-3 py-1 text-[11px] font-bold ring-1 ring-inset ring-black/5">#7C3AED</span>
+  </article>
+</body>
+</html>
