@@ -1,0 +1,19 @@
+{
+  "name": "Suela Franca",
+  "trade": "zapatillas deportivas / tenis",
+  "searched": true,
+  "searchedAt": "2026-11-06",
+  "queries": [
+    {
+      "query": "\"Suela Franca\" zapatillas tienda",
+      "engine": "DuckDuckGo HTML",
+      "result": "No results found for \"Suela Franca\" zapatillas tienda."
+    },
+    {
+      "query": "\"Suela Franca\"",
+      "engine": "DuckDuckGo HTML",
+      "result": "Only an agronomy text (suelo franco-arcilloso); no brand, shop or person with that name."
+    }
+  ],
+  "domain": "Not checked: no domain lookup tool available; confirm suelafranca.com/.es before launch."
+}
