@@ -1,39 +1,12 @@
 {
  "page": "C:\\Users\\Zaira\\Documents\\Prueba de pagina\\awscloudclub\\src\\equipos\\Equipo azul\\index.html",
  "url": "http://127.0.0.1:5200/index.html",
- "at": "2026-11-06T20:49:37.007Z",
+ "at": "2026-11-06T20:53:16.770Z",
  "out": "C:\\Users\\Zaira\\Documents\\Prueba de pagina\\awscloudclub\\src\\equipos\\Equipo azul\\.taste-skill\\consistency",
  "widths": [
   {
    "width": 1440,
    "height": 900,
-   "screens": 4,
-   "held": 0,
-   "errors": [],
-   "findings": [],
-   "glAsked": 0
-  },
-  {
-   "width": 1024,
-   "height": 768,
-   "screens": 4,
-   "held": 0,
-   "errors": [],
-   "findings": [],
-   "glAsked": 0
-  },
-  {
-   "width": 820,
-   "height": 1180,
-   "screens": 4,
-   "held": 0,
-   "errors": [],
-   "findings": [],
-   "glAsked": 0
-  },
-  {
-   "width": 768,
-   "height": 1024,
    "screens": 4,
    "held": 0,
    "errors": [],
@@ -48,14 +21,24 @@
    "errors": [],
    "findings": [
     {
-     "check": "hole",
+     "check": "section-gaps",
      "sev": "WARN",
-     "sel": "section#modelos",
-     "text": "Tenis por disciplina",
-     "msg": "an empty hole 168x224px inside the section (27% of the screen's height), with content above and below it",
-     "stop": 1,
-     "crop": "390-01-hole.jpg",
-     "fix": "close the empty space: move the content together, or give the space the visual it lacks"
+     "sel": "main#top > section.hero.hero--statement / section#modelos",
+     "text": "",
+     "stop": 6,
+     "msg": "636px between these sections, +38% against the median 462px of gaps at a change of ground",
+     "crop": "390-02-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
+    },
+    {
+     "check": "section-gaps",
+     "sev": "WARN",
+     "sel": "section#modelos / footer#contact",
+     "text": "",
+     "stop": 3,
+     "msg": "288px between these sections, -38% against the median 462px",
+     "crop": "390-01-section-gaps.jpg",
+     "fix": "use one gap between sections (all within 25% of each other)"
     }
    ],
    "glAsked": 0
@@ -77,14 +60,16 @@
   "widths": [
    1280,
    1152,
-   896
+   1024,
+   896,
+   768
   ],
   "errors": [],
   "findings": []
  },
  "counts": {
   "FAIL": 0,
-  "WARN": 1
+  "WARN": 2
  },
  "checks": {
   "assets": "PASS",
@@ -149,9 +134,9 @@
   "text-contrast": "PASS",
   "body-size": "PASS",
   "busy-ground": "PASS",
-  "section-gaps": "PASS",
+  "section-gaps": "WARN",
   "proximity": "PASS",
-  "hole": "WARN",
+  "hole": "PASS",
   "links": "PASS",
   "forms": "PASS",
   "photo-upscale": "PASS",
