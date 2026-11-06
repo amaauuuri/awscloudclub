@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-type="place">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#F8FAFC" />
-  <title>Equipo Amarillo | AWS Cloud Club ITP</title>
+  <meta name="theme-color" content="#FBF5E9" />
+  <meta name="description" content="Refugio Patio Amarillo: perritos en adopción en Villa Canela. Visítanos de martes a sábado y conoce a los perritos que buscan hogar." />
+  <meta name="page-type" content="place" />
+  <meta name="site-kind" content="other" />
+  <meta name="page-kind" content="place" />
+  <title>Patio Amarillo | Adopción de perros en Villa Canela</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --paper: #f8fafc;
-      --surface: #ffffff;
-      --ink: #0f172a;
-      --muted: #64748b;
-      --line: rgba(15, 23, 42, 0.13);
-      --line-strong: rgba(15, 23, 42, 0.26);
-      --accent: #ffc83b;
-      --on-accent: #0f172a;
-      --sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
-      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --ground: #fbf5e9;
+      --surface: #f2e8d5;
+      --surface-2: #ece0c9;
+      --ink: #2a2418;
+      --muted: #6b6152;
+      --accent: #f2b705;
+      --accent-strong: #e0a400;
+      --line: rgba(42, 36, 24, 0.18);
+      --terracotta: #d97757;
+      --green: #4f7a52;
+      --sky: #8fb8cc;
+      --rose: #e8a0a0;
+      --nav: 76px;
+      --radius: 0;
+      --sans: "Figtree", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Fraunces", Georgia, "Times New Roman", serif;
       color-scheme: light;
     }
 
@@ -30,210 +39,1414 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: auto;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px;
-      background: var(--paper);
+      background: var(--ground);
       color: var(--ink);
       font-family: var(--sans);
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 18px;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
     h1,
-    p {
+    h2,
+    h3,
+    p,
+    figure,
+    dl,
+    dd {
       margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
     }
 
     ::selection {
       background: var(--accent);
-      color: var(--on-accent);
+      color: var(--ink);
     }
 
-    :where(a):focus-visible {
-      outline: 2px solid var(--ink);
+    :where(a, button, input, select, textarea):focus-visible {
+      outline: 3px solid var(--ink);
       outline-offset: 3px;
     }
 
-    .shell {
-      width: min(100%, 1040px);
+    .skip {
+      position: absolute;
+      left: 16px;
+      top: -100px;
+      z-index: 50;
+      padding: 12px 20px;
+      background: var(--ink);
+      color: var(--ground);
+      font-weight: 600;
+      border-radius: 2px;
     }
 
-    .team {
-      display: grid;
-      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-      min-height: min(560px, calc(100vh - 64px));
-      overflow: hidden;
-      border: 1px solid var(--line-strong);
-      border-radius: 20px;
-      background: var(--surface);
+    .skip:focus {
+      top: 16px;
     }
 
-    .team__color {
-      position: relative;
+    .wrap {
+      width: min(100% - 80px, 1200px);
+      margin-inline: auto;
+    }
+
+    .section {
+      min-height: 100svh;
+      padding: 140px 0 80px;
+    }
+
+    /* ---------- Nav ---------- */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      height: var(--nav);
+      background: var(--ground);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav__inner {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
-      gap: 40px;
-      padding: 28px;
-      background: var(--accent);
-      color: var(--on-accent);
+      gap: 24px;
+      height: var(--nav);
     }
 
-    .team__color::after {
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .brand__mark {
+      width: 40px;
+      height: 40px;
+      flex: none;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-left: auto;
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .nav__links a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav__links a::after,
+    .footer__links a::after {
       content: "";
       position: absolute;
-      right: -12%;
-      bottom: 16%;
-      width: 54%;
-      aspect-ratio: 1;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      opacity: 0.28;
-      pointer-events: none;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    .team__label {
+    .nav__links a:hover::after,
+    .nav__links a:focus-visible::after,
+    .footer__links a:hover::after,
+    .footer__links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .nav__end {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav__toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid var(--ink);
+      border-radius: 2px;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .nav__toggle span,
+    .nav__toggle span::before,
+    .nav__toggle span::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin-inline: auto;
+      background: currentColor;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .nav__toggle span {
+      position: relative;
+    }
+
+    .nav__toggle span::before,
+    .nav__toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .nav__toggle span::before {
+      top: -6px;
+    }
+
+    .nav__toggle span::after {
+      top: 6px;
+    }
+
+    .nav__toggle[aria-expanded="true"] span {
+      background: transparent;
+    }
+
+    .nav__toggle[aria-expanded="true"] span::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav__toggle[aria-expanded="true"] span::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav__sheet {
+      display: none;
+    }
+
+    /* ---------- Buttons and links ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 56px;
+      padding: 0 28px;
+      border: 2px solid var(--ink);
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: transform 140ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 140ms ease, color 140ms ease;
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: var(--ink);
+    }
+
+    .btn--primary:hover {
+      background: var(--accent-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn--secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn--secondary:hover {
+      background: var(--ink);
+      color: var(--ground);
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(0.985);
+    }
+
+    .link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .team__label::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border: 1px solid currentColor;
-      border-radius: 50%;
-      background: currentColor;
-    }
-
-    .team__hex {
-      position: relative;
-      z-index: 1;
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      opacity: 0.88;
-    }
-
-    .team__copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-      padding: clamp(28px, 4vw, 56px);
-    }
-
-    .team__copy h1 {
-      max-width: 12ch;
-      font-family: var(--display);
-      font-size: clamp(2.7rem, 6vw, 5rem);
       font-weight: 600;
-      line-height: 0.94;
-      letter-spacing: -0.06em;
-      overflow-wrap: anywhere;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 100% 1px;
+      padding-bottom: 2px;
     }
 
-    .team--long .team__copy h1 {
-      font-size: clamp(2.4rem, 4.9vw, 4rem);
-      letter-spacing: -0.075em;
+    .link:hover,
+    .link:focus-visible {
+      background-size: 0 1px;
+      background-position: 100% 100%;
+      transition: background-size 200ms ease;
     }
 
-    .team__copy p {
-      max-width: 32ch;
-      font-size: clamp(1rem, 1.5vw, 1.15rem);
-      line-height: 1.7;
+    .link span {
+      transition: transform 140ms ease;
+    }
+
+    .link:hover span {
+      transform: translateX(3px);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: 100svh;
+      padding: calc(var(--nav) + 64px) 0 88px;
+    }
+
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 1px solid var(--ink);
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(44px, 5.4vw, 72px);
+      font-weight: 600;
+      line-height: 1.03;
+      letter-spacing: -0.025em;
+      max-width: 13ch;
+    }
+
+    .lead {
+      margin-top: 24px;
+      max-width: 44ch;
+      font-size: clamp(18px, 1.4vw, 21px);
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .hero__art {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      aspect-ratio: 8 / 7;
+    }
+
+    .hero__art svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ---------- Dogs ---------- */
+    .dogs {
+      background: var(--surface);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-family: var(--display);
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      max-width: 40ch;
+      font-size: 18px;
       color: var(--muted);
     }
 
-    .team__rule {
+    .dogs__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .dog-card {
+      background: var(--ground);
+      border: 1px solid var(--line);
+      transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 180ms ease;
+    }
+
+    .dog-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--ink);
+    }
+
+    .dog-card__link {
+      display: block;
+      height: 100%;
+    }
+
+    .dog-art {
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--surface-2);
+    }
+
+    .dog-art svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .dog-card:hover .dog-art svg {
+      transform: scale(1.03);
+    }
+
+    .dog-card__body {
+      padding: 24px;
+    }
+
+    .dog-card h3 {
+      font-family: var(--display);
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .dog-card__meta {
+      margin-top: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .dog-card__desc {
+      margin-top: 12px;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .dog-card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 600;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 2px;
+    }
+
+    .dog-card__cta span {
+      transition: transform 140ms ease;
+    }
+
+    .dog-card:hover .dog-card__cta span {
+      transform: translateX(3px);
+    }
+
+    /* ---------- Steps ---------- */
+    .steps__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 40px;
+    }
+
+    .step {
+      border-top: 2px solid var(--ink);
+      padding-top: 28px;
+    }
+
+    .step__num {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      font-family: var(--display);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .step:nth-child(1) .step__num {
+      background: var(--accent);
+    }
+
+    .step:nth-child(2) .step__num {
+      background: #cddfc7;
+    }
+
+    .step:nth-child(3) .step__num {
+      background: #f4c9b7;
+    }
+
+    .step h3 {
+      margin-top: 24px;
+      font-family: var(--display);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .step p {
+      margin-top: 12px;
+      max-width: 34ch;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .steps__note {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 64px;
+      padding: 24px 28px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      max-width: 760px;
+    }
+
+    .steps__note svg {
+      flex: none;
+      width: 30px;
+      height: 30px;
+      margin-top: 2px;
+    }
+
+    .steps__note p {
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .steps__note strong {
+      font-weight: 700;
+    }
+
+    /* ---------- Contact + footer ---------- */
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
+      padding-bottom: 0;
+    }
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact__intro {
+      max-width: 44ch;
+      margin-top: 20px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .info-block {
+      margin-top: 36px;
+    }
+
+    .info-block h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .address {
+      font-style: normal;
+      font-family: var(--display);
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .hours {
+      margin-top: 32px;
+      max-width: 360px;
+    }
+
+    .hours div {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+    }
+
+    .hours div:last-child {
+      border-bottom: 0;
+    }
+
+    .hours dt {
+      color: var(--muted);
+    }
+
+    .hours dd {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .contact__action {
+      margin-top: 32px;
+    }
+
+    .form-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 32px;
+    }
+
+    .form-panel h3 {
+      font-family: var(--display);
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .form-panel > p {
+      margin-top: 8px;
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .adopt-form {
+      margin-top: 24px;
+    }
+
+    .field {
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .field span {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      min-height: 56px;
+      padding: 12px 16px;
+      border: 1px solid var(--ink);
+      border-radius: 2px;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .field textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .adopt-form .btn {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .form-note {
+      margin-top: 14px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer__inner {
       display: flex;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 22px 0;
+      font-size: 15px;
+      color: var(--muted);
     }
 
-    .team__rule::before,
-    .team__rule::after {
-      content: "";
-      height: 1px;
-      background: var(--line);
+    .footer__brand {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
     }
 
-    .team__rule::before {
-      width: 32px;
-      background: var(--ink);
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-weight: 600;
     }
 
-    .team__rule::after {
-      flex: 1;
+    .footer__links a {
+      position: relative;
+      color: var(--ink);
     }
 
-    @media (max-width: 760px) {
-      body {
-        padding: 24px 16px;
-        place-items: start center;
+    /* ---------- Mobile action bar ---------- */
+    .actionbar {
+      display: none;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1023px) {
+      .wrap {
+        width: min(100% - 48px, 1200px);
       }
 
-      .team {
+      .hero__grid {
+        gap: 40px;
+      }
+
+      .nav__links {
+        gap: 22px;
+      }
+
+      .contact__grid {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .nav__links {
+        display: none;
+      }
+
+      .nav__toggle {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav__sheet {
+        position: fixed;
+        inset: var(--nav) 0 auto;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 24px;
+        background: var(--ground);
+        border-bottom: 1px solid var(--line);
+        min-height: calc(100svh - var(--nav));
+      }
+
+      .nav__sheet.is-open {
+        display: flex;
+      }
+
+      .nav__sheet a:not(.btn) {
+        padding: 16px 4px;
+        border-bottom: 1px solid var(--line);
+        font-family: var(--display);
+        font-size: 26px;
+        font-weight: 600;
+      }
+
+      .nav__sheet .btn {
+        margin-top: 16px;
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: calc(var(--nav) + 32px);
+        padding-bottom: 72px;
+      }
+
+      .hero__grid {
         grid-template-columns: 1fr;
-        min-height: 0;
-        border-radius: 16px;
+        gap: 28px;
       }
 
-      .team__color {
-        min-height: 172px;
-        padding: 22px;
+      h1 {
+        max-width: 15ch;
       }
 
-      .team__color::after {
-        right: -6%;
-        bottom: -20%;
-        width: 44%;
+      .hero__art {
+        aspect-ratio: 3 / 2;
       }
 
-      .team__copy {
-        gap: 88px;
-        padding: 28px 22px 24px;
+      .dogs__grid {
+        grid-template-columns: 1fr;
       }
 
-      .team__copy h1 {
-        max-width: 10ch;
-        font-size: clamp(2.4rem, 13vw, 3.7rem);
+      .dog-card__link {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        align-items: center;
       }
 
-      .team--long .team__copy h1 {
-        max-width: 12ch;
-        font-size: clamp(2.15rem, 11vw, 3.3rem);
+      .dog-art {
+        height: 100%;
+        aspect-ratio: auto;
+      }
+
+      .dog-card__body {
+        padding: 18px 22px;
+      }
+
+      .dog-card h3 {
+        font-size: 24px;
+      }
+
+      .dog-card__desc {
+        margin-top: 6px;
+        font-size: 17px;
+      }
+
+      .dog-card__cta {
+        margin-top: 10px;
+        font-size: 17px;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .steps__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        column-gap: 20px;
+        align-items: start;
+        padding-top: 22px;
+      }
+
+      .step__num {
+        grid-row: span 2;
+        width: 64px;
+        height: 64px;
+        font-size: 28px;
+      }
+
+      .step h3 {
+        margin-top: 0;
+      }
+
+      .step p {
+        margin-top: 6px;
+      }
+
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hours {
+        max-width: none;
+      }
+
+      .form-panel {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 639px) {
+      body {
+        font-size: 18px;
+      }
+
+      .wrap {
+        width: min(100% - 40px, 1200px);
+      }
+
+      .section {
+        padding: 112px 0 64px;
+      }
+
+      .hero {
+        padding-top: calc(var(--nav) + 24px);
+        padding-bottom: 96px;
+      }
+
+      .nav__cta {
+        display: none;
+      }
+
+      .brand {
+        font-size: 19px;
+      }
+
+      .brand__mark {
+        width: 34px;
+        height: 34px;
+      }
+
+      h1 {
+        font-size: clamp(38px, 11vw, 50px);
+      }
+
+      .eyebrow {
+        margin-bottom: 14px;
+      }
+
+      .lead {
+        margin-top: 18px;
+      }
+
+      .hero__actions {
+        margin-top: 24px;
+      }
+
+      .hero__actions .link {
+        display: none;
+      }
+
+      .hero__grid {
+        gap: 24px;
+      }
+
+      h2 {
+        font-size: clamp(30px, 8.4vw, 40px);
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+
+      .hero__actions .btn {
+        width: 100%;
+      }
+
+      .hero__actions .link {
+        justify-content: center;
+      }
+
+      .dog-card__link {
+        grid-template-columns: 110px 1fr;
+      }
+
+      .dog-card__body {
+        padding: 14px 16px;
+      }
+
+      .dog-card h3 {
+        font-size: 22px;
+      }
+
+      .dog-card__desc {
+        display: none;
+      }
+
+      .dog-card__cta {
+        border-bottom: 0;
+        margin-top: 8px;
+        font-size: 16px;
+      }
+
+      .step {
+        grid-template-columns: 56px 1fr;
+        column-gap: 16px;
+      }
+
+      .step__num {
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+      }
+
+      .step h3 {
+        font-size: 24px;
+      }
+
+      .steps__note {
+        margin-top: 40px;
+        padding: 20px;
+      }
+
+      .contact {
+        padding-bottom: 0;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding-bottom: 108px;
+      }
+
+      .actionbar {
+        position: fixed;
+        inset: auto 0 0;
+        z-index: 30;
+        display: block;
+        padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+        background: var(--ground);
+        border-top: 1px solid var(--line);
+      }
+
+      .actionbar .btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .dog-card:hover,
+      .dog-card:hover .dog-art svg,
+      .btn:hover,
+      .btn:active,
+      .link:hover span,
+      .dog-card:hover .dog-card__cta span {
+        transform: none;
       }
     }
   </style>
 </head>
 <body>
-  <main class="shell">
-    <article class="team team--long">
-      <div class="team__color">
-        <span class="team__label">Equipo</span>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="Patio Amarillo, inicio">
+        <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" fill="#F2B705" stroke="#2A2418" stroke-width="2" />
+          <ellipse cx="13" cy="14" rx="3" ry="4" fill="#2A2418" />
+          <ellipse cx="27" cy="14" rx="3" ry="4" fill="#2A2418" />
+          <ellipse cx="8.5" cy="21" rx="2.6" ry="3.4" fill="#2A2418" />
+          <ellipse cx="31.5" cy="21" rx="2.6" ry="3.4" fill="#2A2418" />
+          <path d="M20 18c-4.6 0-8.5 4.4-8.5 8.2 0 3 2.4 4.3 5 3.2 2-.8 5-.8 7 0 2.6 1.1 5-.2 5-3.2 0-3.8-3.9-8.2-8.5-8.2Z" fill="#2A2418" />
+        </svg>
+        <span>Patio Amarillo</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Principal">
+        <a href="#perritos">Perritos</a>
+        <a href="#como-adoptar">Cómo adoptar</a>
+        <a href="#contacto">Visítanos</a>
+      </nav>
+
+      <div class="nav__end">
+        <a class="btn btn--primary nav__cta" href="#perritos">Conocer a los perritos</a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <span></span>
+        </button>
       </div>
-      <div class="team__copy">
-        <div>
-          <h1>Equipo Amarilloooo de Eriiiiiika 27</h1>
-          <p>Este es el equipo Amarillo</p>
+    </div>
+
+    <div class="nav__sheet" id="menu">
+      <a href="#perritos">Perritos</a>
+      <a href="#como-adoptar">Cómo adoptar</a>
+      <a href="#contacto">Visítanos</a>
+      <a class="btn btn--primary" href="#perritos">Conocer a los perritos</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">Refugio de perros en Villa Canela</p>
+          <h1 id="hero-title">Perritos en adopción en Villa Canela</h1>
+          <p class="lead">Tres perritos buscan un hogar tranquilo. Abrimos de martes a sábado, de 10:00 a 17:00. Ven a conocerlos sin compromiso.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#perritos">Conocer a los perritos</a>
+            <a class="link" href="#contacto">Escribir al refugio <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-        <span class="team__rule" aria-hidden="true"></span>
+
+        <figure class="hero__art">
+          <svg viewBox="0 0 640 560" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="hero-art-title">
+            <title id="hero-art-title">Ilustración de un perro sentado junto a una pelota y unas plantas</title>
+            <rect width="640" height="560" fill="#F4E7CF" />
+            <circle cx="512" cy="118" r="72" fill="#F2B705" />
+            <path d="M0 438q160-52 320-16t320-6v124H0Z" fill="#E6D2AE" />
+
+            <g fill="#4F7A52">
+              <path d="M76 470c-8-42-4-84 10-112" stroke="#4F7A52" stroke-width="8" fill="none" stroke-linecap="round" />
+              <ellipse cx="66" cy="372" rx="27" ry="12" transform="rotate(-32 66 372)" fill="#5E8A60" />
+              <ellipse cx="98" cy="346" rx="27" ry="12" transform="rotate(30 98 346)" fill="#4F7A52" />
+              <ellipse cx="70" cy="318" rx="24" ry="11" transform="rotate(-22 70 318)" fill="#5E8A60" />
+              <path d="M566 470c8-42 4-84-10-112" stroke="#4F7A52" stroke-width="8" fill="none" stroke-linecap="round" />
+              <ellipse cx="576" cy="372" rx="27" ry="12" transform="rotate(32 576 372)" fill="#5E8A60" />
+              <ellipse cx="544" cy="346" rx="27" ry="12" transform="rotate(-30 544 346)" fill="#4F7A52" />
+              <ellipse cx="572" cy="318" rx="24" ry="11" transform="rotate(22 572 318)" fill="#5E8A60" />
+            </g>
+
+            <!-- tail -->
+            <path d="M388 398c64-14 82 24 56 66" stroke="#C47A50" stroke-width="26" stroke-linecap="round" fill="none" />
+
+            <!-- dog -->
+            <ellipse cx="300" cy="384" rx="100" ry="106" fill="#D98A5F" />
+            <ellipse cx="300" cy="396" rx="54" ry="76" fill="#F7D9B8" />
+            <rect x="268" y="398" width="26" height="82" rx="13" fill="#D98A5F" />
+            <rect x="320" y="398" width="26" height="82" rx="13" fill="#D98A5F" />
+            <ellipse cx="281" cy="478" rx="23" ry="14" fill="#F7D9B8" />
+            <ellipse cx="333" cy="478" rx="23" ry="14" fill="#F7D9B8" />
+            <ellipse cx="246" cy="458" rx="38" ry="27" fill="#C97B52" />
+            <ellipse cx="358" cy="458" rx="38" ry="27" fill="#C97B52" />
+
+            <path d="M236 204c-46 0-52 88-16 118 24 16 36-20 32-58Z" fill="#B96A45" />
+            <path d="M364 204c46 0 52 88 16 118-24 16-36-20-32-58Z" fill="#B96A45" />
+            <circle cx="300" cy="248" r="82" fill="#D98A5F" />
+            <ellipse cx="300" cy="280" rx="48" ry="38" fill="#F7D9B8" />
+
+            <circle cx="270" cy="236" r="9" fill="#2A2418" />
+            <circle cx="330" cy="236" r="9" fill="#2A2418" />
+            <circle cx="273" cy="233" r="3" fill="#FFFDF7" />
+            <circle cx="333" cy="233" r="3" fill="#FFFDF7" />
+
+            <path d="M300 256c-14 0-21 10-21 19 0 10 9 17 21 17s21-7 21-17c0-9-7-19-21-19Z" fill="#3A2A22" />
+            <path d="M300 292v10" stroke="#3A2A22" stroke-width="4" stroke-linecap="round" />
+            <path d="M300 302c-8 9-16 10-24 3M300 302c8 9 16 10 24 3" stroke="#3A2A22" stroke-width="4" stroke-linecap="round" fill="none" />
+            <path d="M300 304c-9 7-10 18-4 26 7 7 15 1 15-8 0-8-5-15-11-18Z" fill="#E88888" />
+
+            <path d="M240 316q60 34 120 0l-4 18q-56 30-112 0Z" fill="#F2B705" />
+            <circle cx="300" cy="352" r="13" fill="#E0A400" stroke="#2A2418" stroke-width="2" />
+
+            <!-- ball -->
+            <circle cx="452" cy="446" r="42" fill="#8FB8CC" />
+            <path d="M414 434q38 26 76 0" stroke="#FBF5E9" stroke-width="10" fill="none" stroke-linecap="round" />
+            <path d="M420 464q32 16 64 0" stroke="#FBF5E9" stroke-width="10" fill="none" stroke-linecap="round" />
+
+            <!-- paw prints -->
+            <g fill="#E0A400">
+              <ellipse cx="128" cy="508" rx="6" ry="8" />
+              <ellipse cx="146" cy="504" rx="5" ry="7" />
+              <ellipse cx="160" cy="512" rx="6" ry="8" />
+              <ellipse cx="140" cy="524" rx="11" ry="9" />
+              <ellipse cx="510" cy="512" rx="5" ry="7" />
+              <ellipse cx="525" cy="508" rx="5" ry="7" />
+              <ellipse cx="499" cy="508" rx="5" ry="7" />
+              <ellipse cx="512" cy="524" rx="10" ry="8" />
+            </g>
+          </svg>
+        </figure>
       </div>
-    </article>
+    </section>
+
+    <!-- DOGS -->
+    <section class="section dogs" id="perritos" aria-labelledby="dogs-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="dogs-title">Perritos en adopción</h2>
+          <p>Conoce a los tres perritos que hoy buscan familia. Todos están vacunados y esterilizados.</p>
+        </div>
+
+        <div class="dogs__grid">
+          <article class="dog-card">
+            <a class="dog-card__link" href="#contacto">
+              <div class="dog-art">
+                <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="nina-title">
+                  <title id="nina-title">Retrato ilustrado de Nina, una perrita de color crema</title>
+                  <rect width="400" height="300" fill="#F6E3C4" />
+                  <circle cx="200" cy="150" r="118" fill="#F2D3A0" />
+                  <path d="M92 300c0-54 48-86 108-86s108 32 108 86Z" fill="#E8C79B" />
+                  <path d="M134 104c-28 8-42 54-28 86 10 22 31 21 39 1 8-20 7-62-11-87Z" fill="#C9A06B" />
+                  <path d="M266 104c28 8 42 54 28 86-10 22-31 21-39 1-8-20-7-62 11-87Z" fill="#C9A06B" />
+                  <circle cx="200" cy="150" r="74" fill="#E8C79B" />
+                  <ellipse cx="200" cy="180" rx="46" ry="36" fill="#FBF1DF" />
+                  <circle cx="200" cy="165" r="15" fill="#3A2A22" />
+                  <path d="M200 181v9M200 190c-9 8-17 3-20-3M200 190c9 8 17 3 20-3" stroke="#3A2A22" stroke-width="4" stroke-linecap="round" fill="none" />
+                  <path d="M160 136q13-13 26 0M214 136q13-13 26 0" stroke="#3A2A22" stroke-width="5" stroke-linecap="round" fill="none" />
+                  <path d="M134 220q66 32 132 0l-5 18q-61 29-122 0Z" fill="#F2B705" />
+                  <circle cx="200" cy="254" r="12" fill="#E0A400" stroke="#3A2A22" stroke-width="2" />
+                </svg>
+              </div>
+              <div class="dog-card__body">
+                <h3>Nina</h3>
+                <p class="dog-card__meta">2 años · Mediana</p>
+                <p class="dog-card__desc">Tranquila y cariñosa. Le encantan las siestas al sol y pasear despacio.</p>
+                <span class="dog-card__cta">Quiero conocer a Nina <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="dog-card">
+            <a class="dog-card__link" href="#contacto">
+              <div class="dog-art">
+                <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="bruno-title">
+                  <title id="bruno-title">Retrato ilustrado de Bruno, un perro de color marrón</title>
+                  <rect width="400" height="300" fill="#EAD9C6" />
+                  <circle cx="200" cy="150" r="118" fill="#DBC3A8" />
+                  <path d="M92 300c0-54 48-86 108-86s108 32 108 86Z" fill="#A9714B" />
+                  <path d="M134 104c-28 8-42 54-28 86 10 22 31 21 39 1 8-20 7-62-11-87Z" fill="#7C4B2E" />
+                  <path d="M266 104c28 8 42 54 28 86-10 22-31 21-39 1-8-20-7-62 11-87Z" fill="#7C4B2E" />
+                  <circle cx="200" cy="150" r="74" fill="#A9714B" />
+                  <ellipse cx="200" cy="182" rx="46" ry="36" fill="#C99A74" />
+                  <circle cx="200" cy="166" r="15" fill="#2F2018" />
+                  <path d="M200 182v8" stroke="#2F2018" stroke-width="4" stroke-linecap="round" />
+                  <path d="M200 190c-10 8-18 2-21-4M200 190c10 8 18 2 21-4" stroke="#2F2018" stroke-width="4" stroke-linecap="round" fill="none" />
+                  <path d="M200 196c-11 8-13 22-5 32 9 9 20 1 20-10 0-9-6-18-15-22Z" fill="#E88888" />
+                  <path d="M200 210v14" stroke="#C46B6B" stroke-width="3" stroke-linecap="round" />
+                  <circle cx="172" cy="138" r="8" fill="#2A2418" />
+                  <circle cx="228" cy="138" r="8" fill="#2A2418" />
+                  <circle cx="174" cy="135" r="3" fill="#FFFDF7" />
+                  <circle cx="230" cy="135" r="3" fill="#FFFDF7" />
+                  <path d="M136 220q64 32 128 0l-5 18q-59 29-118 0Z" fill="#4F7A52" />
+                  <circle cx="200" cy="254" r="12" fill="#F2B705" stroke="#2A2418" stroke-width="2" />
+                </svg>
+              </div>
+              <div class="dog-card__body">
+                <h3>Bruno</h3>
+                <p class="dog-card__meta">4 años · Grande</p>
+                <p class="dog-card__desc">Juguetón y sociable. Disfruta los paseos largos y jugar con la pelota.</p>
+                <span class="dog-card__cta">Quiero conocer a Bruno <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="dog-card">
+            <a class="dog-card__link" href="#contacto">
+              <div class="dog-art">
+                <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="luna-title">
+                  <title id="luna-title">Retrato ilustrado de Luna, una perrita blanca con orejas negras</title>
+                  <rect width="400" height="300" fill="#DCE8E4" />
+                  <circle cx="200" cy="150" r="118" fill="#C4DAD3" />
+                  <path d="M92 300c0-54 48-86 108-86s108 32 108 86Z" fill="#F2EEE6" />
+                  <path d="M148 100 118 18l60 48Z" fill="#3B3B3B" />
+                  <path d="M252 100 282 18l-60 48Z" fill="#3B3B3B" />
+                  <circle cx="200" cy="150" r="74" fill="#F2EEE6" />
+                  <ellipse cx="170" cy="138" rx="30" ry="32" fill="#3B3B3B" />
+                  <ellipse cx="200" cy="182" rx="46" ry="36" fill="#FFFDF7" />
+                  <circle cx="200" cy="166" r="15" fill="#2A2418" />
+                  <path d="M200 182v8" stroke="#2A2418" stroke-width="4" stroke-linecap="round" />
+                  <path d="M200 190c-9 8-17 3-20-3M200 190c9 8 17 3 20-3" stroke="#2A2418" stroke-width="4" stroke-linecap="round" fill="none" />
+                  <circle cx="170" cy="138" r="7" fill="#FFFDF7" />
+                  <circle cx="170" cy="138" r="4" fill="#2A2418" />
+                  <circle cx="232" cy="138" r="8" fill="#2A2418" />
+                  <circle cx="234" cy="135" r="3" fill="#FFFDF7" />
+                  <path d="M136 220q64 32 128 0l-5 18q-59 29-118 0Z" fill="#D97757" />
+                  <circle cx="200" cy="254" r="12" fill="#F2B705" stroke="#2A2418" stroke-width="2" />
+                </svg>
+              </div>
+              <div class="dog-card__body">
+                <h3>Luna</h3>
+                <p class="dog-card__meta">3 años · Pequeña</p>
+                <p class="dog-card__desc">Curiosa y dulce. Se lleva bien con niños y con otros perros.</p>
+                <span class="dog-card__cta">Quiero conocer a Luna <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="section steps" id="como-adoptar" aria-labelledby="steps-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="steps-title">Cómo adoptar en 3 pasos</h2>
+          <p>Es sencillo. Te acompañamos en todo el proceso, también después de la adopción.</p>
+        </div>
+
+        <div class="steps__grid">
+          <div class="step">
+            <div class="step__num" aria-hidden="true">1</div>
+            <h3>Elige un perrito</h3>
+            <p>Mira las fotos y el carácter de cada uno. Si te gusta uno, apunta su nombre y cuéntanoslo.</p>
+          </div>
+
+          <div class="step">
+            <div class="step__num" aria-hidden="true">2</div>
+            <h3>Visítanos y conócelo</h3>
+            <p>Ven al refugio sin cita. Pasea con el perrito y resuelve tus dudas con nuestro equipo.</p>
+          </div>
+
+          <div class="step">
+            <div class="step__num" aria-hidden="true">3</div>
+            <h3>Completa la adopción</h3>
+            <p>Revisamos juntos la solicitud y te damos una guía de cuidados: comida, paseos y veterinario.</p>
+          </div>
+        </div>
+
+        <div class="steps__note">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 42S8 32 8 19a9 9 0 0 1 16-6 9 9 0 0 1 16 6c0 13-16 23-16 23Z" fill="#D97757" />
+          </svg>
+          <p><strong>No hace falta experiencia.</strong> Si es tu primera mascota, te explicamos con calma los cuidados básicos y te acompañamos en los primeros días.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + FOOTER -->
+    <section class="section contact" id="contacto" aria-labelledby="contact-title">
+      <div class="wrap contact__grid">
+        <div>
+          <h2 id="contact-title">Ven a conocerlos</h2>
+          <p class="contact__intro">Estamos en el Barrio El Mirador. No hace falta cita: pasea, conoce a los perritos y pregunta lo que necesites.</p>
+
+          <div class="info-block">
+            <h3>Dirección</h3>
+            <address class="address">Calle del Sauce<br />Barrio El Mirador, Villa Canela</address>
+          </div>
+
+          <dl class="hours" aria-label="Horario de apertura">
+            <div><dt>Lunes</dt><dd>Cerrado</dd></div>
+            <div><dt>Martes a sábado</dt><dd>10:00 – 17:00</dd></div>
+            <div><dt>Domingo</dt><dd>Cerrado</dd></div>
+          </dl>
+
+          <div class="contact__action">
+            <a class="btn btn--secondary" href="mailto:hola@patioamarillo.example">Escribir al refugio</a>
+          </div>
+        </div>
+
+        <div class="form-panel">
+          <h3>Pide una visita</h3>
+          <p>Déjanos tus datos y el nombre del perrito que te gusta.</p>
+
+          <form class="adopt-form" action="mailto:hola@patioamarillo.example" method="post" enctype="text/plain">
+            <label class="field">
+              <span>Nombre y apellido</span>
+              <input type="text" name="nombre" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span>Correo o teléfono</span>
+              <input type="text" name="contacto" autocomplete="email" required />
+            </label>
+
+            <label class="field">
+              <span>¿Qué perrito te gusta?</span>
+              <select name="perrito">
+                <option value="">Elige un perrito</option>
+                <option>Nina</option>
+                <option>Bruno</option>
+                <option>Luna</option>
+                <option>Todavía no lo sé</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Cuéntanos un poco</span>
+              <textarea name="mensaje" rows="3"></textarea>
+            </label>
+
+            <button class="btn btn--primary" type="submit">Enviar solicitud</button>
+            <p class="form-note">Te respondemos en un día laborable.</p>
+          </form>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="wrap footer__inner">
+          <p class="footer__brand">Refugio Patio Amarillo · Villa Canela</p>
+          <nav class="footer__links" aria-label="Pie de página">
+            <a href="#perritos">Perritos</a>
+            <a href="#como-adoptar">Cómo adoptar</a>
+            <a href="#contacto">Visítanos</a>
+          </nav>
+          <p class="footer__legal">© 2026 · Ilustraciones propias</p>
+        </div>
+      </footer>
+    </section>
   </main>
+
+  <nav class="actionbar" aria-label="Acción principal">
+    <a class="btn btn--primary" href="#perritos">Conocer a los perritos</a>
+  </nav>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav__toggle');
+      var sheet = document.getElementById('menu');
+
+      if (!toggle || !sheet) return;
+
+      function closeMenu() {
+        sheet.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menú');
+      }
+
+      toggle.addEventListener('click', function () {
+        var open = sheet.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      sheet.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeMenu();
+      });
+    })();
+  </script>
 </body>
 </html>
