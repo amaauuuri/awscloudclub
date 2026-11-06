@@ -75,8 +75,13 @@
   #modelos .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   #modelos .grid > .span-4 { grid-column: auto; }
 }
-/* the descriptions are a desktop richness: the tablet and the phone hold the rows alone, one screen */
+/* the descriptions are a desktop richness: the tablet holds the rows alone, one screen */
 @media (max-width: 799px) { .offer-group .rows > li > p { display: none; } }
+/* on the phone two lines a group keep the price list from reading as an empty middle */
+@media (max-width: 639px) {
+  .offer-group .rows > li:nth-child(2) > p,
+  .offer-group .rows > li:nth-child(3) > p { display: block; }
+}
 /* at the small tablet the first three rows of each group keep their line: one screen, and no empty band under it */
 @media (min-width: 700px) and (max-width: 799px) {
   .offer-group .rows > li:not(:last-child) > p { display: block; }

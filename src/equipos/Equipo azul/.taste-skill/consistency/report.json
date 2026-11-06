@@ -1,17 +1,51 @@
 {
  "page": "C:\\Users\\Zaira\\Documents\\Prueba de pagina\\awscloudclub\\src\\equipos\\Equipo azul\\index.html",
  "url": "http://127.0.0.1:5200/index.html",
- "at": "2026-11-06T20:46:36.461Z",
+ "at": "2026-11-06T20:49:37.007Z",
  "out": "C:\\Users\\Zaira\\Documents\\Prueba de pagina\\awscloudclub\\src\\equipos\\Equipo azul\\.taste-skill\\consistency",
  "widths": [
+  {
+   "width": 1440,
+   "height": 900,
+   "screens": 4,
+   "held": 0,
+   "errors": [],
+   "findings": [],
+   "glAsked": 0
+  },
+  {
+   "width": 1024,
+   "height": 768,
+   "screens": 4,
+   "held": 0,
+   "errors": [],
+   "findings": [],
+   "glAsked": 0
+  },
+  {
+   "width": 820,
+   "height": 1180,
+   "screens": 4,
+   "held": 0,
+   "errors": [],
+   "findings": [],
+   "glAsked": 0
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "screens": 4,
+   "held": 0,
+   "errors": [],
+   "findings": [],
+   "glAsked": 0
+  },
   {
    "width": 390,
    "height": 844,
    "screens": 6,
    "held": 0,
-   "errors": [
-    "rhythm: row and card status read at 390px: no desktop read earlier in this run (run 1440 before 390 in one run to judge rows and cards as at the desktop)"
-   ],
+   "errors": [],
    "findings": [
     {
      "check": "hole",
@@ -22,16 +56,6 @@
      "stop": 1,
      "crop": "390-01-hole.jpg",
      "fix": "close the empty space: move the content together, or give the space the visual it lacks"
-    },
-    {
-     "check": "hover",
-     "sev": "WARN",
-     "sel": "header.nav.nav--split > div.wrap.nav__bar > button.nav__toggle",
-     "text": "",
-     "msg": "the nav link (\"\") looks the same hovered as at rest, while the filled button, text link answer",
-     "stop": 2,
-     "crop": "390-02-hover.jpg",
-     "fix": "give buttons and links a small answer to the pointer (the motion layer: a fill change, a drawn underline, an arrow that moves)"
     }
    ],
    "glAsked": 0
@@ -39,35 +63,28 @@
  ],
  "shaders": 0,
  "reduced": {
-  "screens": 5,
+  "screens": 3,
   "notRead": 0
  },
  "hidden": {
-  "screens": 5
+  "screens": 3
  },
  "slow": {
   "stops": 6,
   "late": 0
  },
- "notChecked": [
-  "motion-layer (motion-hooks: no width of this run is one it runs at)",
-  "count-text (motion-hooks: no width of this run is one it runs at)",
-  "loop-cycle (motion-hooks: no width of this run is one it runs at)"
- ],
  "sweep": {
   "widths": [
    1280,
    1152,
-   1024,
-   896,
-   768
+   896
   ],
   "errors": [],
   "findings": []
  },
  "counts": {
   "FAIL": 0,
-  "WARN": 2
+  "WARN": 1
  },
  "checks": {
   "assets": "PASS",
@@ -165,7 +182,7 @@
   "fold-action": "PASS",
   "action-count": "PASS",
   "one-screen": "PASS",
-  "hover": "WARN",
+  "hover": "PASS",
   "hover-move": "PASS",
   "product-shown": "PASS",
   "same-object": "PASS",
@@ -186,9 +203,9 @@
   "container-edges": "PASS",
   "row-lines": "PASS",
   "split-pair": "PASS",
-  "motion-layer": "not checked",
-  "count-text": "not checked",
-  "loop-cycle": "not checked",
+  "motion-layer": "PASS",
+  "count-text": "PASS",
+  "loop-cycle": "PASS",
   "section-tile": "PASS"
  }
 }
