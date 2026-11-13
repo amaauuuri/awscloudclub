@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FBF9FF" />
+  <meta name="description" content="AWS Cloud Club ITP: la comunidad de estudiantes que aprende, conecta y crece en la nube." />
+  <title>AWS Cloud Club ITP | Comunidad tech universitaria</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238B0FC6'/%3E%3Cpath d='M20 40h24a8 8 0 0 0 1.1-15.9A12 12 0 0 0 22 28a6 6 0 0 0-2 12Z' fill='none' stroke='%23FFFFFF' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='47' cy='18' r='5' fill='%23FBE143'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fbf9ff;
+      --surface: #ffffff;
+      --ink: #170b22;
+      --ink-soft: #2b1839;
+      --muted: #6a5f76;
+      --line: rgba(139, 15, 198, 0.14);
+      --line-strong: rgba(139, 15, 198, 0.3);
+      --sun: #fbe143;
+      --sun-hover: #ffe66b;
+      --sun-soft: #fffbd6;
+      --azure: #303dec;
+      --purple: #8b0fc6;
+      --purple-bright: #af38e8;
+      --purple-dark: #7308a5;
+      --plum: #26032f;
+      --lavender: #f7e9ff;
+      --blue-soft: #ecebff;
+      --green: #15803d;
+      --green-soft: #f0fdf4;
+      --radius: 16px;
+      --sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color-scheme: light;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    dl,
+    dd,
+    dt,
+    ul {
+      margin: 0;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+    }
+
+    ::selection {
+      background: var(--sun);
+      color: var(--ink);
+    }
+
+    :where(a, button):focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 200;
+      padding: 10px 18px;
+      border: 1px solid var(--purple);
+      border-radius: 999px;
+      background: var(--surface);
+      font-size: 13px;
+      font-weight: 600;
+      transform: translateY(-160%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: min(100% - 48px, 1180px);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .header__inner {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      min-width: 0;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand__mark {
+      position: relative;
+      display: grid;
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid var(--purple);
+      border-radius: 10px;
+      background: var(--purple);
+      color: var(--surface);
+      transition: background-color 160ms ease, border-color 160ms ease;
+    }
+
+    .brand:hover .brand__mark {
+      border-color: var(--purple-bright);
+      background: var(--purple-bright);
+    }
+
+    .brand__mark::after {
+      content: "";
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--paper);
+      border-radius: 50%;
+      background: var(--sun);
+    }
+
+    .brand__mark svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .brand__word {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      font-family: var(--display);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .brand__word span {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      color: var(--purple);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav a {
+      position: relative;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 160ms ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -5px;
+      left: 0;
+      height: 1px;
+      background: var(--purple);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .nav a:hover {
+      color: var(--purple);
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 19px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .btn svg {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 auto;
+      transition: transform 180ms ease;
+    }
+
+    .btn:hover svg {
+      transform: translateX(2px);
+    }
+
+    .btn--dark {
+      border-color: var(--purple);
+      background: var(--purple);
+      color: var(--surface);
+    }
+
+    .btn--dark:hover {
+      border-color: var(--azure);
+      background: var(--azure);
+      transform: translateY(-1px);
+    }
+
+    .btn--sun {
+      border-color: #d9c22f;
+      background: var(--sun);
+      color: var(--ink);
+    }
+
+    .btn--sun:hover {
+      background: var(--sun-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn--ghost {
+      border-color: var(--line-strong);
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .btn--light {
+      border-color: rgba(248, 250, 252, 0.25);
+      background: transparent;
+      color: var(--paper);
+    }
+
+    .btn--light:hover {
+      border-color: rgba(248, 250, 252, 0.6);
+      background: rgba(248, 250, 252, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .menu-button {
+      display: none;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .menu-button svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .menu-button .icon-close,
+    .menu-button[aria-expanded="true"] .icon-open {
+      display: none;
+    }
+
+    .menu-button[aria-expanded="true"] .icon-close {
+      display: block;
+    }
+
+    .mobile-menu {
+      border-top: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .mobile-menu[hidden] {
+      display: none;
+    }
+
+    .mobile-menu__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 10px 0 18px;
+    }
+
+    .mobile-menu a {
+      padding: 10px 4px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .mobile-menu .btn {
+      margin-top: 14px;
+      border-bottom: 0;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(64px, 8vw, 108px) 0 clamp(56px, 7vw, 88px);
+    }
+
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(139, 15, 198, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 15, 198, 0.07) 1px, transparent 1px);
+      background-size: 72px 72px;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
+      pointer-events: none;
+    }
+
+    .hero__layout {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+      align-items: center;
+      gap: clamp(40px, 6vw, 84px);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 13px 5px 6px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: var(--surface);
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .pill__dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--sun);
+      box-shadow: inset 0 0 0 5px var(--surface), 0 0 0 1px var(--purple);
+    }
+
+    .pill__sep {
+      width: 1px;
+      height: 11px;
+      background: var(--line-strong);
+    }
+
+    .hero h1 {
+      max-width: 11ch;
+      margin-top: 24px;
+      font-family: var(--display);
+      font-size: clamp(3rem, 6.8vw, 6.2rem);
+      font-weight: 600;
+      line-height: 0.93;
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--purple);
+      text-decoration-line: underline;
+      text-decoration-color: var(--sun);
+      text-decoration-thickness: 0.11em;
+      text-underline-offset: 0.08em;
+      text-decoration-skip-ink: none;
+    }
+
+    .hero__lead {
+      max-width: 540px;
+      margin-top: 25px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .stats {
+      display: grid;
+      max-width: 480px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 40px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line-strong);
+    }
+
+    .stats > div {
+      padding-right: 18px;
+    }
+
+    .stats > div + div {
+      padding-left: 18px;
+      border-left: 1px solid var(--line);
+    }
+
+    .stats dd {
+      font-family: var(--display);
+      font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--purple);
+    }
+
+    .stats dt {
+      margin-top: 7px;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .board {
+      width: min(100%, 480px);
+      margin-left: auto;
+    }
+
+    .club-card {
+      padding: 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 18px 40px -36px rgba(139, 15, 198, 0.45);
+    }
+
+    .club-card__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 4px 4px 13px;
+    }
+
+    .club-card__id {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .club-card__mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid var(--purple);
+      border-radius: 9px;
+      background: var(--purple);
+      color: var(--surface);
+    }
+
+    .club-card__mark svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .club-card__name {
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .club-card__sub {
+      margin-top: 1px;
+      font-family: var(--mono);
+      font-size: 8.5px;
+      letter-spacing: 0.06em;
+      color: var(--purple);
+    }
+
+    .status {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 7px;
+      border: 1px solid #bbf7d0;
+      border-radius: 999px;
+      background: var(--green-soft);
+      font-family: var(--mono);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .status::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .event {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      border-radius: 14px;
+      background: var(--purple);
+      color: #ffffff;
+    }
+
+    .event::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(248, 250, 252, 0.13) 1px, transparent 1px);
+      background-size: 18px 18px;
+      -webkit-mask-image: linear-gradient(120deg, transparent 30%, #000 100%);
+      mask-image: linear-gradient(120deg, transparent 30%, #000 100%);
+      pointer-events: none;
+    }
+
+    .event__top,
+    .event__foot {
+      position: relative;
+    }
+
+    .event__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .event__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .event__tag::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--sun);
+    }
+
+    .event__calendar {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border: 1px solid var(--sun);
+      border-radius: 9px;
+      background: var(--sun);
+      color: var(--ink);
+    }
+
+    .event__calendar svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .event__kicker {
+      position: relative;
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.07em;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .event__title {
+      position: relative;
+      max-width: 15ch;
+      margin-top: 7px;
+      font-family: var(--display);
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+    }
+
+    .event__foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 22px;
+      padding-top: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.24);
+    }
+
+    .event__time {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 9px;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .event__time svg {
+      width: 13px;
+      height: 13px;
+      color: var(--sun);
+    }
+
+    .event__spots {
+      padding: 3px 7px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      font-family: var(--mono);
+      font-size: 8px;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 9px;
+    }
+
+    .mini {
+      display: flex;
+      min-height: 111px;
+      flex-direction: column;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--paper);
+    }
+
+    .mini__icon {
+      display: grid;
+      width: 27px;
+      height: 27px;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 7px;
+      background: var(--surface);
+      color: var(--purple);
+    }
+
+    .mini:nth-child(2) .mini__icon {
+      border-color: rgba(48, 61, 236, 0.28);
+      background: var(--blue-soft);
+      color: var(--azure);
+    }
+
+    .mini:nth-child(3) .mini__icon {
+      border-color: #d9c22f;
+      background: var(--sun);
+      color: var(--ink);
+    }
+
+    .mini__icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .mini h3 {
+      margin-top: 10px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .mini p {
+      margin-top: 2px;
+      font-size: 9.5px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .avatars {
+      display: flex;
+      margin-top: 9px;
+    }
+
+    .avatars span {
+      display: grid;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border: 1px solid var(--paper);
+      border-radius: 50%;
+      font-family: var(--mono);
+      font-size: 7px;
+      font-weight: 600;
+    }
+
+    .avatars span + span {
+      margin-left: -6px;
+    }
+
+    .avatars span:nth-child(1) {
+      background: var(--purple);
+      color: #ffffff;
+    }
+
+    .avatars span:nth-child(2) {
+      background: var(--azure);
+      color: #ffffff;
+    }
+
+    .avatars span:nth-child(3) {
+      background: var(--sun);
+      color: var(--ink);
+    }
+
+    .mini--community h3 {
+      margin-top: 6px;
+    }
+
+    .section {
+      padding: clamp(72px, 9vw, 118px) 0;
+    }
+
+    .section--benefits {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+      align-items: end;
+      gap: clamp(28px, 5vw, 72px);
+      margin-bottom: clamp(32px, 4vw, 48px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border: 1px solid var(--purple);
+      border-radius: 50%;
+      background: var(--sun);
+    }
+
+    .section-head h2 {
+      max-width: 15ch;
+      margin-top: 16px;
+      font-family: var(--display);
+      font-size: clamp(2.35rem, 5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .section-head h2 span {
+      color: var(--purple);
+      text-decoration-line: underline;
+      text-decoration-color: var(--sun);
+      text-decoration-thickness: 0.1em;
+      text-underline-offset: 0.08em;
+      text-decoration-skip-ink: none;
+    }
+
+    .section-head > p {
+      max-width: 42ch;
+      padding-bottom: 5px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--muted);
+    }
+
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .benefit {
+      display: flex;
+      min-height: 340px;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform 200ms ease, border-color 200ms ease;
+    }
+
+    .benefit:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+    }
+
+    .benefit__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .benefit__icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgba(139, 15, 198, 0.28);
+      border-radius: 10px;
+      background: var(--lavender);
+      color: var(--purple);
+    }
+
+    .benefit:nth-child(2) .benefit__icon {
+      border-color: rgba(48, 61, 236, 0.26);
+      background: var(--blue-soft);
+      color: var(--azure);
+    }
+
+    .benefit:nth-child(3) .benefit__icon {
+      border-color: #d9c22f;
+      background: var(--sun);
+      color: var(--ink);
+    }
+
+    .benefit__icon svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .benefit__num {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .benefit h3 {
+      max-width: 18ch;
+      margin-top: 34px;
+      font-family: var(--display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    .benefit > p {
+      max-width: 34ch;
+      margin-top: 12px;
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    .tags span {
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section--community {
+      padding-bottom: clamp(72px, 9vw, 118px);
+    }
+
+    .community {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      align-items: end;
+      gap: clamp(32px, 5vw, 64px);
+      overflow: hidden;
+      padding: clamp(32px, 5.5vw, 66px);
+      border-radius: 22px;
+      background: var(--plum);
+      color: var(--paper);
+    }
+
+    .community::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(248, 250, 252, 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(248, 250, 252, 0.055) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse at 75% 40%, #000, transparent 70%);
+      mask-image: radial-gradient(ellipse at 75% 40%, #000, transparent 70%);
+      pointer-events: none;
+    }
+
+    .community__copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow--light {
+      color: rgba(248, 250, 252, 0.58);
+    }
+
+    .eyebrow--light::before {
+      border-color: var(--paper);
+      background: var(--sun);
+    }
+
+    .community h2 {
+      max-width: 14ch;
+      margin-top: 17px;
+      font-family: var(--display);
+      font-size: clamp(2.3rem, 4.8vw, 4.2rem);
+      font-weight: 600;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .community h2 span {
+      color: var(--sun);
+      text-decoration-line: underline;
+      text-decoration-color: var(--purple-bright);
+      text-decoration-thickness: 0.1em;
+      text-underline-offset: 0.08em;
+      text-decoration-skip-ink: none;
+    }
+
+    .community p {
+      max-width: 57ch;
+      margin-top: 20px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: rgba(248, 250, 252, 0.62);
+    }
+
+    .community__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .community__note {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 24px;
+      font-family: var(--mono);
+      font-size: 9px;
+      line-height: 1.5;
+      color: rgba(248, 250, 252, 0.48);
+    }
+
+    .community__note svg {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      color: var(--sun);
+    }
+
+    .community__art {
+      position: relative;
+      display: grid;
+      width: 220px;
+      height: 220px;
+      place-items: center;
+      justify-self: end;
+    }
+
+    .community__art::before,
+    .community__art::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .community__art::before {
+      inset: 0;
+      border: 1px solid rgba(175, 56, 232, 0.55);
+    }
+
+    .community__art::after {
+      width: 112px;
+      height: 112px;
+      border: 1px solid rgba(48, 61, 236, 0.8);
+    }
+
+    .community__art span {
+      position: relative;
+      z-index: 1;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--sun);
+      box-shadow: 0 0 0 10px rgba(175, 56, 232, 0.12), 0 0 0 30px rgba(48, 61, 236, 0.08);
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(139, 15, 198, 0.24);
+      background: var(--surface);
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.55fr) minmax(0, 0.8fr);
+      gap: clamp(28px, 5vw, 64px);
+      padding: clamp(40px, 6vw, 64px) 0;
+    }
+
+    .footer__brand p {
+      max-width: 38ch;
+      margin-top: 18px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .site-footer h2 {
+      font-family: var(--mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .footer__links a,
+    .footer__contact a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      transition: color 160ms ease;
+    }
+
+    .footer__links a:hover,
+    .footer__contact a:hover {
+      color: var(--purple);
+    }
+
+    .footer__contact p {
+      max-width: 32ch;
+      margin-top: 15px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .footer__contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 9px;
+      font-weight: 600;
+    }
+
+    .footer__contact svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .footer__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0 22px;
+      border-top: 1px solid var(--line);
+      font-family: var(--mono);
+      font-size: 8.5px;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+    }
+
+    @media (max-width: 980px) {
+      .nav,
+      .header__actions {
+        display: none;
+      }
+
+      .menu-button {
+        display: grid;
+      }
+
+      .hero__layout {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .hero h1 {
+        max-width: 12ch;
+      }
+
+      .board {
+        max-width: 560px;
+        margin-left: 0;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .section-head > p {
+        max-width: 58ch;
+      }
+
+      .benefit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .benefit:last-child {
+        grid-column: span 2;
+        min-height: 280px;
+      }
+
+      .community {
+        grid-template-columns: 1fr;
+      }
+
+      .community__art {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 32px, 1180px);
+      }
+
+      .header__inner {
+        min-height: 64px;
+      }
+
+      .brand__mark {
+        width: 36px;
+        height: 36px;
+      }
+
+      .brand__word {
+        font-size: 14px;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .pill {
+        flex-wrap: wrap;
+        border-radius: 12px;
+        line-height: 1.5;
+      }
+
+      .pill__sep {
+        display: none;
+      }
+
+      .hero h1 {
+        max-width: 10ch;
+        font-size: clamp(2.75rem, 14vw, 4rem);
+      }
+
+      .hero__lead {
+        font-size: 15px;
+      }
+
+      .hero__actions .btn {
+        flex: 1 1 100%;
+      }
+
+      .stats > div {
+        padding-right: 10px;
+      }
+
+      .stats > div + div {
+        padding-left: 10px;
+      }
+
+      .stats dt {
+        font-size: 8px;
+      }
+
+      .club-card {
+        padding: 9px;
+        border-radius: 18px;
+      }
+
+      .club-card__head {
+        padding: 3px 3px 10px;
+      }
+
+      .club-card__name {
+        font-size: 12px;
+      }
+
+      .club-card__sub {
+        font-size: 8px;
+      }
+
+      .status {
+        font-size: 7px;
+      }
+
+      .event {
+        padding: 16px;
+      }
+
+      .event__title {
+        font-size: 22px;
+      }
+
+      .mini {
+        min-height: 108px;
+        padding: 11px;
+      }
+
+      .benefit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .benefit,
+      .benefit:last-child {
+        grid-column: auto;
+        min-height: 0;
+      }
+
+      .benefit h3 {
+        margin-top: 26px;
+      }
+
+      .section-head h2,
+      .community h2 {
+        font-size: clamp(2.1rem, 10.5vw, 3.1rem);
+      }
+
+      .community {
+        padding: 28px 22px;
+        border-radius: 18px;
+      }
+
+      .community__actions .btn {
+        flex: 1 1 100%;
+      }
+
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#inicio">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="#inicio" aria-label="AWS Cloud Club ITP, ir al inicio">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.75 18.25h10.5a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925-3.546 5.974 5.974 0 0 0-9.094 1.563A5.25 5.25 0 0 0 6.75 18.25Z" />
+          </svg>
+        </span>
+        <span class="brand__word">AWS Cloud Club <span>ITP</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#comunidad">Comunidad</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="btn btn--dark" href="mailto:awscloudclub@itp.edu?subject=Quiero%20unirme%20al%20AWS%20Cloud%20Club%20ITP">
+          Únete al club
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <nav class="container mobile-menu__inner" aria-label="Navegación móvil">
+        <a href="#inicio">Inicio</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#comunidad">Comunidad</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn--dark" href="mailto:awscloudclub@itp.edu?subject=Quiero%20unirme%20al%20AWS%20Cloud%20Club%20ITP">
+          Únete al club
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="container hero__layout">
+        <div class="hero__copy">
+          <div class="pill">
+            <span class="pill__dot" aria-hidden="true"></span>
+            Comunidad estudiantil del ITP
+            <span class="pill__sep" aria-hidden="true"></span>
+            Abierta a todas las carreras
+          </div>
+
+          <h1>Aprende, conecta y crece <em>en la nube.</em></h1>
+
+          <p class="hero__lead">El AWS Cloud Club ITP es el espacio donde estudiantes del Instituto Tecnológico exploran AWS, comparten conocimiento y construyen proyectos juntos. Sin experiencia previa, solo curiosidad.</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--sun" href="mailto:awscloudclub@itp.edu?subject=Quiero%20unirme%20al%20AWS%20Cloud%20Club%20ITP">
+              Quiero unirme
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a class="btn btn--ghost" href="#beneficios">
+              Explorar beneficios
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M10 3a.75.75 0 0 1 .75.75v10.638l3.96-4.158a.75.75 0 1 1 1.08 1.04l-5.25 5.5a.75.75 0 0 1-1.08 0l-5.25-5.5a.75.75 0 1 1 1.08-1.04l3.96 4.158V3.75A.75.75 0 0 1 10 3Z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+
+          <dl class="stats">
+            <div>
+              <dd>120+</dd>
+              <dt>miembros activos</dt>
+            </div>
+            <div>
+              <dd>15+</dd>
+              <dt>talleres al año</dt>
+            </div>
+            <div>
+              <dd>Todas</dd>
+              <dt>las carreras</dt>
+            </div>
+          </dl>
+        </div>
+
+        <div class="board">
+          <div class="club-card">
+            <div class="club-card__head">
+              <div class="club-card__id">
+                <span class="club-card__mark" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6.75 18.25h10.5a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925-3.546 5.974 5.974 0 0 0-9.094 1.563A5.25 5.25 0 0 0 6.75 18.25Z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="club-card__name">Cloud Club ITP</p>
+                  <p class="club-card__sub">Construyendo en comunidad</p>
+                </div>
+              </div>
+              <span class="status">Activa</span>
+            </div>
+
+            <div class="event">
+              <div class="event__top">
+                <span class="event__tag">Próximo encuentro</span>
+                <span class="event__calendar" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                  </svg>
+                </span>
+              </div>
+
+              <p class="event__kicker">Workshop · Cloud 101</p>
+              <h2 class="event__title">Primeros pasos en AWS</h2>
+
+              <div class="event__foot">
+                <span class="event__time">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  Jueves · 18:00 h
+                </span>
+                <span class="event__spots">Cupos abiertos</span>
+              </div>
+            </div>
+
+            <div class="mini-grid">
+              <div class="mini">
+                <span class="mini__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                  </svg>
+                </span>
+                <h3>Cloud Skills</h3>
+                <p>Aprende haciendo</p>
+              </div>
+              <div class="mini">
+                <span class="mini__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                  </svg>
+                </span>
+                <h3>Networking</h3>
+                <p>Conecta en el ITP</p>
+              </div>
+              <div class="mini">
+                <span class="mini__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+                  </svg>
+                </span>
+                <h3>Cloud Quest</h3>
+                <p>Aprende jugando</p>
+              </div>
+              <div class="mini mini--community">
+                <div class="avatars" aria-hidden="true">
+                  <span>AR</span>
+                  <span>SM</span>
+                  <span>JL</span>
+                </div>
+                <h3>Comunidad abierta</h3>
+                <p>Todas las carreras del ITP</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--benefits" id="beneficios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Por qué unirte</span>
+            <h2>Mucho más que aprender <span>sobre la nube.</span></h2>
+          </div>
+          <p>Un espacio pensado para estudiantes del ITP que quieren aprender tecnología, compartir lo que saben y abrir nuevas oportunidades.</p>
+        </div>
+
+        <div class="benefit-grid">
+          <article class="benefit">
+            <div class="benefit__top">
+              <span class="benefit__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925-3.546 5.974 5.974 0 0 0-9.094 1.563A5.25 5.25 0 0 0 2.25 15Z" />
+                </svg>
+              </span>
+              <span class="benefit__num">01</span>
+            </div>
+            <h3>Aprende en la nube</h3>
+            <p>Talleres prácticos de AWS, fundamentos cloud, inteligencia artificial y desarrollo moderno, guiados por estudiantes para estudiantes.</p>
+            <div class="tags">
+              <span>AWS</span>
+              <span>Cloud</span>
+              <span>IA</span>
+            </div>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit__top">
+              <span class="benefit__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                </svg>
+              </span>
+              <span class="benefit__num">02</span>
+            </div>
+            <h3>Conecta con tu comunidad</h3>
+            <p>Conoce personas con tus mismos intereses, participa en meetups y forma parte de una red que crece dentro y fuera del ITP.</p>
+            <div class="tags">
+              <span>Meetups</span>
+              <span>Proyectos</span>
+              <span>Networking</span>
+            </div>
+          </article>
+
+          <article class="benefit">
+            <div class="benefit__top">
+              <span class="benefit__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+                </svg>
+              </span>
+              <span class="benefit__num">03</span>
+            </div>
+            <h3>Impulsa tu carrera</h3>
+            <p>Prepárate para certificaciones, colabora en proyectos reales y desarrolla las habilidades que las empresas tecnológicas están buscando.</p>
+            <div class="tags">
+              <span>Certificaciones</span>
+              <span>Portafolio</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--community" id="comunidad">
+      <div class="container">
+        <div class="community">
+          <div class="community__copy">
+            <span class="eyebrow eyebrow--light">Comunidad abierta</span>
+            <h2>Tu próximo paso en la nube <span>empieza aquí.</span></h2>
+            <p>Súmate al AWS Cloud Club ITP, conoce a otros estudiantes y lleva tus ideas a la nube. No necesitas saber AWS para empezar: aquí aprendemos juntos.</p>
+
+            <div class="community__actions">
+              <a class="btn btn--sun" href="mailto:awscloudclub@itp.edu?subject=Quiero%20unirme%20al%20AWS%20Cloud%20Club%20ITP">
+                Quiero formar parte
+                <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+                </svg>
+              </a>
+              <a class="btn btn--light" href="#beneficios">Explorar beneficios</a>
+            </div>
+
+            <p class="community__note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              Abierto a estudiantes de todas las carreras del ITP. Sin experiencia previa.
+            </p>
+          </div>
+
+          <div class="community__art" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contacto">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#inicio" aria-label="AWS Cloud Club ITP, ir al inicio">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6.75 18.25h10.5a3.75 3.75 0 0 0 .495-7.467 5.99 5.99 0 0 0-1.925-3.546 5.974 5.974 0 0 0-9.094 1.563A5.25 5.25 0 0 0 6.75 18.25Z" />
+              </svg>
+            </span>
+            <span class="brand__word">AWS Cloud Club <span>ITP</span></span>
+          </a>
+          <p>Una comunidad hecha por estudiantes del ITP, para estudiantes que quieren construir su futuro en la nube.</p>
+        </div>
+
+        <nav aria-label="Enlaces del pie de página">
+          <h2>Explora</h2>
+          <div class="footer__links">
+            <a href="#inicio">Inicio</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#comunidad">Comunidad</a>
+          </div>
+        </nav>
+
+        <div class="footer__contact">
+          <h2>Hablemos</h2>
+          <p>¿Tienes una idea, una pregunta o quieres sumarte?</p>
+          <a href="mailto:awscloudclub@itp.edu">
+            awscloudclub@itp.edu
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> AWS Cloud Club ITP. Hecho por estudiantes.</p>
+        <p>AWS y los logotipos relacionados son marcas de Amazon Web Services.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    function closeMenu() {
+      mobileMenu.hidden = true;
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Abrir menú de navegación");
+    }
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+        return;
+      }
+      mobileMenu.hidden = false;
+      menuButton.setAttribute("aria-expanded", "true");
+      menuButton.setAttribute("aria-label", "Cerrar menú de navegación");
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 981) closeMenu();
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
