@@ -1,9 +1,10 @@
 <!doctype html>
 <!-- kind: place (a shop; it sells online, so no street is printed and the visit block carries orders, shipping and contact)
-     deal: hero statement on .ground-brand (no photographs), nav-split, footer-columns, rhythm space (the colour-band
-           close is dropped: the hero is the page's one brand band), buttons arrow, mark ring, no effect, no moment,
-           no scene; the short page drops the place section, the type moment and the rooms layout.
-     copy: Suela Franca, a coined name (names.json); Valencia and the prices, shipping and returns terms are assumed. -->
+     deal: hero--place (the photograph full-bleed under the header, the words below on the ground), nav-split,
+           footer-columns, rhythm space, buttons arrow, mark ring, no effect, no moment, no scene; the short page
+           drops the place section, the type moment and the rooms layout. One photograph sits in the offer row.
+     copy: Suela Franca, a coined name (names.json); Valencia and the prices, shipping and returns terms are assumed.
+     photos: Rawpixel and Allie Nimmons (CC0), temporary stand-ins for the shop's own running, trail and futsal frames. -->
 <html lang="es" data-type="place" data-page-mode="short" data-radius="soft" data-buttons="arrow" data-motion>
 <head>
 <meta charset="utf-8">
@@ -13,6 +14,8 @@
 <meta name="site-kind" content="other">
 <meta name="page-type" content="place">
 <meta name="page-kind" content="place">
+<link rel="preload" href="assets/fonts/worksans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/worksans-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/system.css">
 <link rel="stylesheet" href="assets/motion/motion.css">
 <link rel="stylesheet" href="assets/layout/layout.css">
@@ -43,20 +46,13 @@
   --display-weight: 400;
   --display-tracking: -0.025em;
 }
-/* a place: the statement hero at the place's own heading size (48/53, never the tech statement's 56) */
-.hero--statement h1 { font-size: var(--t-h1); line-height: 1.104; letter-spacing: var(--display-tracking); }
-/* the hero's three blocks (the name, the sub-line and action, the facts) share the band's height, no rule between them */
-.hero--statement .hero__facts { border-top: 0; padding-top: 0; margin-top: 0; }
-.hero--statement .hero__facts dt { color: var(--ink); }
-.hero__mid .btn-row { margin-top: var(--s-6); }
-/* the band's space inside matches the next section's --padt (they read as one gap at the change of ground) */
-@media (min-width: 640px) { main > section.hero--statement { padding-bottom: var(--padt); } }
+/* the hero's two crops: a 4:3 frame for the tablet and the phone, a 3:1 band at the desktop (see the <picture>) */
+.hero--place > picture.hero__bg > img { object-position: 50% 50%; }
 /* the nav's primary carries the dealt arrow: a blank of the same width keeps its label centred */
 @media (min-width: 640px) { .nav__actions .btn::before { content: ""; flex: none; width: 12px; height: 12px; margin-left: -2px; } }
 @media (max-width: 639px) { html[data-buttons="arrow"] .nav__actions .btn--primary::after { content: none; } }
 /* the phone's menu button answers the pointer like every other control */
 .nav__toggle:hover { background: color-mix(in oklab, var(--p-bg) 90%, var(--p-ink)); }
-@media (max-width: 639px) { .hero--statement .hero__facts { display: grid; } }
 /* the offer's head row: the h2 on the left line, its one line on the ninth column's line (a column start) */
 .head-row { display: grid; gap: var(--s-5); margin-bottom: var(--head-gap); }
 @media (min-width: 640px) {
@@ -64,28 +60,41 @@
   .head-row > div { grid-column: 1 / span 8; }
   .head-row > p { grid-column: 9 / -1; text-align: right; }
 }
+/* the offer's rhythm: one screen at the desktop, two on the phone; the tablet takes two too, with the photograph
+   full width (the media query below) */
+#modelos { --h: 1; --hm: 2; }
 /* the offer: a group label sits 12px over its ruled rows */
 .offer-group > .t-label { margin-bottom: var(--s-3); }
-.offer-group .rows > li > p { color: var(--muted); }
+/* the product photograph in the offer row: level with the group labels, a 4:5 portrait on the place */
+.offer-photo { --pl-r: .8; }
+.offer-photo > img { width: 100%; object-position: 50% 28%; }
 /* the visit block on the short page: three columns under the groups */
-.pedidos { margin-top: var(--s-8); }
+.pedidos { margin-top: var(--s-7); }
 .pedidos p { max-width: 34ch; }
-/* 640-1023: the three groups and the three order columns stay across, one screen (sections.md, the short page) */
+/* the last link never rests under the phone's action bar */
+.pedidos a { scroll-margin-block: calc(var(--bar) + var(--s-6)); }
+/* 640-1023: the photograph takes the first screen full width, the groups and the three order columns the second
+   (sections.md, the short page: with a photograph in the section, --h: 2 at the tablet) */
 @media (min-width: 640px) and (max-width: 1023px) {
-  #modelos .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  #modelos .grid > .span-4 { grid-column: auto; }
+  #modelos { --h: 2; }
+  #modelos .offer-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #modelos .offer-grid > .offer-group { grid-column: auto; }
+  #modelos .offer-grid > .offer-photo { grid-column: 1 / -1; order: -1; }
+  #modelos .offer-photo > img {
+    aspect-ratio: auto;
+    width: 100%;
+    height: calc(var(--pl-room) - 1.25 * var(--t-h2) - var(--head-gap));
+    margin-bottom: calc(var(--padt) + var(--padb) + var(--bar) - var(--card-gap));
+    object-position: 50% 32%;
+  }
+  #modelos .pedidos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #modelos .pedidos > .span-4 { grid-column: auto; }
 }
-/* the descriptions are a desktop richness: the tablet holds the rows alone, one screen */
-@media (max-width: 799px) { .offer-group .rows > li > p { display: none; } }
-/* on the phone two lines a group keep the price list from reading as an empty middle */
+/* the phone: the photograph after the groups, a 16:9 band inside the section's two screens */
 @media (max-width: 639px) {
-  .offer-group .rows > li:nth-child(2) > p,
-  .offer-group .rows > li:nth-child(3) > p { display: block; }
-}
-/* at the small tablet the first three rows of each group keep their line: one screen, and no empty band under it */
-@media (min-width: 700px) and (max-width: 799px) {
-  .offer-group .rows > li:not(:last-child) > p { display: block; }
-  #modelos .pedidos { margin-top: calc(var(--s-8) - 14px); }
+  .offer-photo > img { aspect-ratio: 16 / 9; height: auto; }
+  /* contact first on the phone: the link never sits under the fixed action bar at the section's foot */
+  #contacto { order: -1; }
 }
 </style>
 </head>
@@ -109,60 +118,60 @@
 </header>
 
 <main id="top">
-  <section class="hero hero--statement ground-brand" aria-labelledby="hero-h">
-    <div class="wrap">
-      <div class="hero-text hero__in">
+  <section class="hero hero--place" aria-labelledby="hero-h">
+    <picture class="hero__bg">
+      <source media="(max-width: 639px)" srcset="assets/img/hero-tenis-390.jpg">
+      <source media="(max-width: 1023px)" srcset="assets/img/hero-tenis-tablet.jpg">
+      <img src="assets/img/hero-tenis.jpg" width="1600" height="533" alt="Dos tenis blancos sobre un suelo de baldosas claras, vistos desde arriba" fetchpriority="high" data-source="library-wordpress" data-subject="tenis">
+    </picture>
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
         <h1 id="hero-h">Tenis deportivos online desde Valencia</h1>
-        <div class="hero__mid">
-          <p class="hero__lead">Running, trail y fútbol sala. Envío en 24-48 h y 30 días para devolver.</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="#modelos">Comprar tenis<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-          </div>
+        <p class="hero__lead">Running, trail y fútbol sala. Envío en 24-48 h y 30 días para devolver.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#modelos">Comprar tenis<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
         </div>
-        <dl class="hero__facts">
-          <div><dt>Tallas</dt><dd>36 a 47</dd></div>
-          <div><dt>Envío gratis</dt><dd>Desde 60 €</dd></div>
-          <div><dt>Pago</dt><dd>Tarjeta o Bizum</dd></div>
-          <div><dt>Atención</dt><dd>1 día laborable</dd></div>
-        </dl>
       </div>
-    </div>
+    </div></div>
   </section>
 
-  <section class="section" id="modelos" style="--h: 1; --hm: 2" aria-labelledby="modelos-h">
+  <section class="section" id="modelos" aria-labelledby="modelos-h">
     <div class="wrap">
       <div class="head-row">
         <div><h2 id="modelos-h">Tenis por disciplina</h2></div>
-        <p class="t-small muted">Del 36 al 47. Todos los precios con IVA.</p>
+        <p class="t-small muted">Del 36 al 47. IVA incluido. Pago con tarjeta o Bizum.</p>
       </div>
-      <div class="grid">
-        <div class="span-4 offer-group" id="running">
+      <div class="grid grid--top offer-grid">
+        <div class="span-3 offer-group" id="running">
           <p class="t-label">Running</p>
           <ul class="rows">
-            <li><span class="rows__name">Asfalto, uso diario</span><span class="rows__value">59,90 €</span><p>Amortiguación media para entrenar en ciudad.</p></li>
-            <li><span class="rows__name">Competición en pista</span><span class="rows__value">89,90 €</span><p>Ligera, para series y carreras cortas.</p></li>
-            <li><span class="rows__name">Entrenamiento mixto</span><span class="rows__value">64,90 €</span><p>Asfalto y caminos fáciles, tres días por semana.</p></li>
-            <li><span class="rows__name">Tirada larga</span><span class="rows__value">94,90 €</span><p>Para medias maratones y rodajes de dos horas.</p></li>
+            <li><span class="rows__name">Asfalto diario</span><span class="rows__value">59,90 €</span></li>
+            <li><span class="rows__name">Competición</span><span class="rows__value">89,90 €</span></li>
+            <li><span class="rows__name">Mixto, asfalto</span><span class="rows__value">64,90 €</span></li>
+            <li><span class="rows__name">Tirada larga</span><span class="rows__value">94,90 €</span></li>
           </ul>
         </div>
-        <div class="span-4 offer-group" id="trail">
+        <div class="span-3 offer-group" id="trail">
           <p class="t-label">Trail</p>
           <ul class="rows">
-            <li><span class="rows__name">Sendero seco</span><span class="rows__value">79,90 €</span><p>Suela con tacos para tierra compacta.</p></li>
-            <li><span class="rows__name">Barro y lluvia</span><span class="rows__value">84,90 €</span><p>Tacos profundos y corte resistente al agua.</p></li>
-            <li><span class="rows__name">Ultra, larga distancia</span><span class="rows__value">99,90 €</span><p>Más protección para salidas de cuatro horas.</p></li>
-            <li><span class="rows__name">Roca y piedra</span><span class="rows__value">89,90 €</span><p>Suela adherente en terreno técnico.</p></li>
+            <li><span class="rows__name">Sendero seco</span><span class="rows__value">79,90 €</span></li>
+            <li><span class="rows__name">Barro y lluvia</span><span class="rows__value">84,90 €</span></li>
+            <li><span class="rows__name">Ultra, 4 horas</span><span class="rows__value">99,90 €</span></li>
+            <li><span class="rows__name">Roca y piedra</span><span class="rows__value">89,90 €</span></li>
           </ul>
         </div>
-        <div class="span-4 offer-group" id="futbol-sala">
+        <div class="span-3 offer-group" id="futbol-sala">
           <p class="t-label">Fútbol sala</p>
           <ul class="rows">
-            <li><span class="rows__name">Sala rápida</span><span class="rows__value">54,90 €</span><p>Pista dura, tacto bajo y mucha suela.</p></li>
-            <li><span class="rows__name">Sala amortiguada</span><span class="rows__value">59,90 €</span><p>Para parqué y pista cubierta.</p></li>
-            <li><span class="rows__name">Sala de competición</span><span class="rows__value">69,90 €</span><p>Ajuste firme para partidos y entrenamientos.</p></li>
-            <li><span class="rows__name">Sala de iniciación</span><span class="rows__value">44,90 €</span><p>Para empezar, con suela flexible.</p></li>
+            <li><span class="rows__name">Sala rápida</span><span class="rows__value">54,90 €</span></li>
+            <li><span class="rows__name">Sala cómoda</span><span class="rows__value">59,90 €</span></li>
+            <li><span class="rows__name">Competición</span><span class="rows__value">69,90 €</span></li>
+            <li><span class="rows__name">Iniciación</span><span class="rows__value">44,90 €</span></li>
           </ul>
         </div>
+        <figure class="pl-photo span-3 offer-photo">
+          <img src="assets/img/detalle-tenis.jpg" srcset="assets/img/detalle-tenis.jpg 600w, assets/img/detalle-tenis-1200.jpg 1200w" sizes="(min-width: 640px) and (max-width: 1023px) 88vw, 342px" width="600" height="600" alt="Una mano sostiene un tenis blanco por los cordones contra una pared clara" loading="lazy" data-source="library-rawpixel" data-subject="tenis">
+        </figure>
       </div>
       <div class="grid pedidos" id="pedidos">
         <div class="span-4" id="envios">
@@ -217,7 +226,7 @@
           </ul>
         </div>
       </div>
-      <div class="footer__legal"><span>© 2026 Suela Franca</span></div>
+      <div class="footer__legal"><span>© 2026 Suela Franca · Fotografías: Rawpixel y Allie Nimmons (CC0)</span></div>
     </div>
   </div>
 </footer>

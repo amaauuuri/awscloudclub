@@ -1,8 +1,8 @@
 {
- "page": "C:\\Users\\Zaira\\Documents\\Prueba de pagina\\awscloudclub\\src\\equipos\\Equipo azul\\index.html",
+ "page": "C:\\Users\\Zaira\\Documents\\GitHub\\awscloudclub\\suela-franca\\index.html",
  "url": "http://127.0.0.1:5200/index.html",
- "at": "2026-11-06T20:53:16.770Z",
- "out": "C:\\Users\\Zaira\\Documents\\Prueba de pagina\\awscloudclub\\src\\equipos\\Equipo azul\\.taste-skill\\consistency",
+ "at": "2026-11-18T21:41:28.702Z",
+ "out": "C:\\Users\\Zaira\\Documents\\GitHub\\awscloudclub\\suela-franca\\.taste-skill\\consistency",
  "widths": [
   {
    "width": 1440,
@@ -11,36 +11,6 @@
    "held": 0,
    "errors": [],
    "findings": [],
-   "glAsked": 0
-  },
-  {
-   "width": 390,
-   "height": 844,
-   "screens": 6,
-   "held": 0,
-   "errors": [],
-   "findings": [
-    {
-     "check": "section-gaps",
-     "sev": "WARN",
-     "sel": "main#top > section.hero.hero--statement / section#modelos",
-     "text": "",
-     "stop": 6,
-     "msg": "636px between these sections, +38% against the median 462px of gaps at a change of ground",
-     "crop": "390-02-section-gaps.jpg",
-     "fix": "use one gap between sections (all within 25% of each other)"
-    },
-    {
-     "check": "section-gaps",
-     "sev": "WARN",
-     "sel": "section#modelos / footer#contact",
-     "text": "",
-     "stop": 3,
-     "msg": "288px between these sections, -38% against the median 462px",
-     "crop": "390-01-section-gaps.jpg",
-     "fix": "use one gap between sections (all within 25% of each other)"
-    }
-   ],
    "glAsked": 0
   }
  ],
@@ -51,10 +21,6 @@
  },
  "hidden": {
   "screens": 3
- },
- "slow": {
-  "stops": 6,
-  "late": 0
  },
  "sweep": {
   "widths": [
@@ -69,7 +35,7 @@
  },
  "counts": {
   "FAIL": 0,
-  "WARN": 2
+  "WARN": 0
  },
  "checks": {
   "assets": "PASS",
@@ -134,7 +100,7 @@
   "text-contrast": "PASS",
   "body-size": "PASS",
   "busy-ground": "PASS",
-  "section-gaps": "WARN",
+  "section-gaps": "PASS",
   "proximity": "PASS",
   "hole": "PASS",
   "links": "PASS",
