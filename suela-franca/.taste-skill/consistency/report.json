@@ -1,13 +1,31 @@
 {
  "page": "C:\\Users\\Zaira\\Documents\\GitHub\\awscloudclub\\suela-franca\\index.html",
  "url": "http://127.0.0.1:5200/index.html",
- "at": "2026-11-18T21:41:28.702Z",
+ "at": "2026-11-18T21:48:47.267Z",
  "out": "C:\\Users\\Zaira\\Documents\\GitHub\\awscloudclub\\suela-franca\\.taste-skill\\consistency",
  "widths": [
   {
    "width": 1440,
    "height": 900,
    "screens": 4,
+   "held": 0,
+   "errors": [],
+   "findings": [],
+   "glAsked": 0
+  },
+  {
+   "width": 1024,
+   "height": 768,
+   "screens": 4,
+   "held": 0,
+   "errors": [],
+   "findings": [],
+   "glAsked": 0
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "screens": 6,
    "held": 0,
    "errors": [],
    "findings": [],
@@ -22,11 +40,14 @@
  "hidden": {
   "screens": 3
  },
+ "slow": {
+  "stops": 6,
+  "late": 0
+ },
  "sweep": {
   "widths": [
    1280,
    1152,
-   1024,
    896,
    768
   ],

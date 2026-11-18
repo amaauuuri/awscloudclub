@@ -38,9 +38,9 @@
 }
 :root {
   --p-bg: #ffffff; --p-surface: #f4f3ef; --p-ink: #161616; --p-muted: #4d4d4d;
-  --p-accent: #a32410; --p-accent-ink: #ffffff; --p-action: #a32410; --p-action-ink: #ffffff;
+  --p-accent: #9c3305; --p-accent-ink: #ffffff; --p-action: #9c3305; --p-action-ink: #ffffff;
   --p-inv-bg: #161616; --p-inv-surface: #232323; --p-inv-ink: #ffffff; --p-inv-muted: #9d9d9d;
-  --p-inv-accent: #a32410; --p-inv-accent-ink: #ffffff; --p-inv-action: #a32410; --p-inv-action-ink: #ffffff;
+  --p-inv-accent: #9c3305; --p-inv-accent-ink: #ffffff; --p-inv-action: #9c3305; --p-inv-action-ink: #ffffff;
   --font-display: "Work Sans", system-ui, sans-serif;
   --font-text: "Work Sans", system-ui, sans-serif;
   --display-weight: 400;
@@ -48,6 +48,14 @@
 }
 /* the hero's two crops: a 4:3 frame for the tablet and the phone, a 3:1 band at the desktop (see the <picture>) */
 .hero--place > picture.hero__bg > img { object-position: 50% 50%; }
+/* the brand band under the photograph: the facts docked to its foot, one line of pairs */
+:root[data-type="place"] section.hero--place .hero__facts {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-6); border-top: 1px solid var(--line); padding-top: var(--s-4);
+}
+:root[data-type="place"] section.hero--place .hero__facts > div { display: flex; align-items: baseline; gap: var(--s-2); grid-column: auto; }
+:root[data-type="place"] section.hero--place .hero__facts dt { color: var(--ink); }
+:root[data-type="place"] section.hero--place .hero__facts dd { color: var(--ink); }
 /* the nav's primary carries the dealt arrow: a blank of the same width keeps its label centred */
 @media (min-width: 640px) { .nav__actions .btn::before { content: ""; flex: none; width: 12px; height: 12px; margin-left: -2px; } }
 @media (max-width: 639px) { html[data-buttons="arrow"] .nav__actions .btn--primary::after { content: none; } }
@@ -118,7 +126,7 @@
 </header>
 
 <main id="top">
-  <section class="hero hero--place" aria-labelledby="hero-h">
+  <section class="hero hero--place ground-brand" aria-labelledby="hero-h">
     <picture class="hero__bg">
       <source media="(max-width: 639px)" srcset="assets/img/hero-tenis-390.jpg">
       <source media="(max-width: 1023px)" srcset="assets/img/hero-tenis-tablet.jpg">
@@ -132,6 +140,12 @@
           <a class="btn btn--primary" href="#modelos">Comprar tenis<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
         </div>
       </div>
+      <dl class="hero__facts">
+        <div><dt>Tallas</dt><dd>36 a 47</dd></div>
+        <div><dt>Envío gratis</dt><dd>Desde 60 €</dd></div>
+        <div><dt>Pago</dt><dd>Tarjeta o Bizum</dd></div>
+        <div><dt>Atención</dt><dd>1 día laborable</dd></div>
+      </dl>
     </div></div>
   </section>
 
@@ -139,7 +153,7 @@
     <div class="wrap">
       <div class="head-row">
         <div><h2 id="modelos-h">Tenis por disciplina</h2></div>
-        <p class="t-small muted">Del 36 al 47. IVA incluido. Pago con tarjeta o Bizum.</p>
+        <p class="t-small muted">Del 36 al 47. Todos los precios con IVA.</p>
       </div>
       <div class="grid grid--top offer-grid">
         <div class="span-3 offer-group" id="running">
